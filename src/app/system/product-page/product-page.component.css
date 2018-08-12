@@ -1,0 +1,31 @@
+.product-title {
+  padding: 10px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.product-content {
+  padding: 20px 0;
+  border-top: solid 2px rgba(255, 0, 0, 0.3);
+}
+
+.product-content .content {
+  color: red;
+}
+
+.product-content .content-parametrs {
+  padding: 10px 0;
+  color: rgba(255, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.product-content .content-parametrs span {
+  word-wrap: normal;
+  color: red;
+  font-weight: normal;
+}
+
+.product-content .content-data {
+  width: 567px;
+  height: 450px;
+}
+/*# sourceMappingURL=product-page.component.css.map */
