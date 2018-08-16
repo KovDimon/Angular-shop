@@ -1,0 +1,35 @@
+<div class="row justify-content-center product">
+  <h2 class="cart-title">CART</h2>
+</div>
+<div class="container cart">
+  <div *ngFor="let product of listProducts" class="row justify-content-center cart-product">
+    <div class="row align-items-center justify-content-between cart-product-wrap">
+      <div class="cart-product-parametrs">
+        <img class="cart-product-img" src="{{product.imageUrl}}" alt="">
+      </div>
+      <div class="cart-product-parametrs cart-product-name">
+        <a [routerLink]="['/product-page', product.type, product.id]" href="#">
+          {{product.title}}
+        </a>
+      </div>
+      <div class="cart-product-parametrs cart-product-price">
+        {{product.price | currency:'USD':'symbol-narrow'}}
+      </div>
+      <div class="cart-product-parametrs cart-product-count">
+        x {{product.count}}
+      </div>
+      <div class="row align-items-center justify-content-center cart-product-parametrs cart-product-delete">
+        <span (click)="deleteProduct(productInCart)" class="delete-img"></span> 
+      </div>
+    </div>
+  </div>
+  <div class="cart-total">
+    <div class="cart-total-title">
+        <h2>Total: <span>{{total | currency:'USD':'symbol-narrow'}}</span></h2>
+    </div>
+    <button class="cart-total-checkout">
+      Checkout
+    </button>
+  </div>
+
+</div>

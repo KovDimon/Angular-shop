@@ -1,0 +1,96 @@
+<div *ngIf="loaded">
+  <div class="row justify-content-center product">
+    <h2 *ngIf="product.title" class="product-title">{{product.title}}</h2>
+  </div>
+  <div class="row justify-content-center">
+    <div class="row product-content">
+      <div class="content-data">
+        <div *ngIf="product.year" class="content-parametrs">
+          <span class="parametrs-title">Year:
+          </span>{{product.year}}
+        </div>
+        <div *ngIf="product.author" class="content-parametrs">
+          <span class="parametrs-title">Author:
+          </span>{{product.author}}
+        </div>
+
+        <div *ngIf="product.genre" class="content-parametrs">
+          <span class="parametrs-title">Genre:
+          </span>{{product.genre}}
+        </div>
+        <div *ngIf="product.authorBiography" class="content-parametrs">
+          <span class="parametrs-title">Author Biography:
+          </span>{{product.authorBiography}}
+        </div>
+
+        <div *ngIf="product.actors" class="content-parametrs">
+          <span class="parametrs-title">Actors:
+          </span>{{product.actors}}
+        </div>
+        <div *ngIf="product.estimatedReadingTime==0" class="content-parametrs">
+          <span class="parametrs-title">Estimated Reading Time:
+          </span>{{product.estimatedReadingTime}}
+        </div>
+
+        <div *ngIf="product.country" class="content-parametrs">
+          <span class="parametrs-title">Country:
+          </span>{{product.country}}
+        </div>
+        <div *ngIf="product.typeVideo" class="content-parametrs">
+          <span class="parametrs-title">Type Video:
+          </span>{{product.typeVideo}}
+        </div>
+
+        <div *ngIf="product.language" class="content-parametrs">
+          <span class="parametrs-title">Language:
+          </span>{{product.language}}
+        </div>
+        <div *ngIf="product.trailer" class="content-parametrs">
+          <span class="parametrs-title">Trailer:
+          </span>{{product.trailer}}
+        </div>
+
+        <div *ngIf="product.runtime && (product.runtime!=='N/A')" class="content-parametrs">
+          <span class="parametrs-title">Runtime:
+          </span>{{product.runtime}}
+        </div>
+        <div *ngIf="product.websites" class="content-parametrs">
+          <span class="parametrs-title">Websites:
+          </span>{{product.websites}}
+        </div>
+        <div *ngIf="product.writers && (product.writers!=='N/A')" class="content-parametrs">
+          <span class="parametrs-title">Writers:
+          </span>{{product.writers}}
+        </div>
+        <!--<div class="content-parametrs">
+          <span class="parametrs-title">Rating IMDB:
+          </span>{{product.imdbRating}}
+        </div>-->
+        <div *ngIf="product.description" class="content-parametrs">
+          <span class="parametrs-title">Description: </span>{{product.description}}
+        </div>
+        <!--<div *ngIf="nameCategory" class="content-parametrs">
+          <span class="parametrs-title">Description: </span>{{product.textWithHTML}}
+        </div>-->
+        <div class="row align-items-center justify-content-center content-buy">
+          <div *ngIf="product.price !== 0" class="content-price">
+            {{product.price | currency:'USD': 'symbol-narrow'}}
+          </div>
+          <button [ngClass]="{'content-button-buy': bought}" class="row align-items-center content-button" (click)="buyProduct()">
+            <span *ngIf="!bought" class="content-button-img"></span>
+            <span *ngIf="!bought">BUY</span>
+            <span *ngIf="bought">BOUGHT</span>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="">
+          <img height="450" *ngIf="product.imageUrl" src="{{product.imageUrl}}" alt="{{product.title}}">
+        </div>
+        <div class="row align-items-center justify-content-center content-rating">Rating: 
+          <span class="rating-number">{{product.rating}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

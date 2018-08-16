@@ -1,6 +1,38 @@
 {
-  "/api": {
-    "target": "http://localhost:4200",
-    "secure": false
+  "/games_api/*": {
+    "target": "https://api-2445582011268.apicast.io",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/games_api": ""
+    },
+    "changeOrigin": true
+  },
+  "/movies_api/*": {
+    "target": "http://www.omdbapi.com",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/movies_api": ""
+    },
+    "changeOrigin": true
+  },
+  "/books_api/*": {
+    "target": "http://extracts.panmacmillan.com/getextracts",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/books_api": ""
+    },
+    "changeOrigin": true
+  },
+  "/country_api/*": {
+    "target": "https://restcountries.eu/rest/v1/",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/country_api": ""
+    },
+    "changeOrigin": true
   }
 }

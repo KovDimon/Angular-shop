@@ -1,0 +1,85 @@
+.product-title {
+  padding: 20px 0 10px 0;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.product-content {
+  padding: 20px 0;
+  border-top: solid 2px rgba(255, 0, 0, 0.3);
+}
+
+.product-content .content {
+  color: red;
+}
+
+.product-content .content-parametrs {
+  padding: 5px 0;
+  word-wrap: normal;
+  color: rgba(0, 0, 255, 0.8);
+  font-weight: normal;
+}
+
+.product-content .content-parametrs .parametrs-title {
+  color: rgba(255, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.product-content .content-price {
+  padding: 0 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.product-content .content-buy {
+  padding: 20px 0;
+}
+
+.product-content .content-data {
+  width: 567px;
+  height: 450px;
+}
+
+.product-content .content-button {
+  margin: 20px 0;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.product-content .content-button:focus {
+  outline: none;
+}
+
+.product-content .content-button-img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url("../../assets/img/icons.png") no-repeat -351px -990px;
+  background-size: 488px 2111px;
+}
+
+.product-content .content-button-buy {
+  background-color: rgba(0, 0, 255, 0.5) !important;
+}
+
+.product-content .content-button:hover {
+  cursor: pointer;
+}
+
+.product-content .content-rating {
+  padding: 10px;
+  font-size: 24px;
+  color: rgba(255, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.product-content .content-rating .rating-number {
+  padding: 5px;
+  margin-left: 5px;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.5);
+  border-radius: 25px;
+}
+/*# sourceMappingURL=product-page.component.css.map */

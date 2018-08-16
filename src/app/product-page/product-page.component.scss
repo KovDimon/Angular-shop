@@ -1,0 +1,97 @@
+$lightRed: rgba(255,0,0, 0.3);
+$red: red;
+$darklyRed: rgba(255, 0, 0, 0.5);
+$white: white;
+
+.product{
+    &-title{
+        padding: 20px 0 10px 0;
+        color: rgba(255,0,0, 0.5);
+    }
+
+    &-content{
+        padding: 20px 0;
+        border-top: solid 2px $lightRed;
+        .content{
+           
+            color: $red;
+
+            &-parametrs{
+                padding: 5px 0;
+                word-wrap: normal;
+                color: rgba(0, 0, 255, 0.8);
+                font-weight: normal;
+
+                .parametrs-title{
+                    color: rgba(255,0,0, 0.5);
+                    font-weight: bold;
+                }
+            }
+
+            &-price{
+                padding: 0 20px;
+                font-size: 32px;
+                font-weight: bold;
+                color: rgba(255,0,0, 0.5);
+            }
+
+            &-buy{
+                padding: 20px 0;
+            }
+
+            &-data{
+                width: 567px;
+                height: 450px;
+            }
+
+            &-button{
+                margin: 20px 0;
+                padding: 10px 20px;
+                border-radius: 30px;
+                //display: flex;
+                //align-items: center;
+                
+                color: $white;
+                background-color: rgba(255, 0, 0, 0.5);
+
+                &:focus{
+                    outline: none;
+                }
+
+                &-img{
+                    display: block;
+                    width: 32px;
+                    height: 32px;
+                    background: url('../../assets/img/icons.png') no-repeat -351px -990px; //-140px -230px;
+                    background-size: 488px 2111px;
+                }
+
+                &-buy{
+                    background-color: rgba(0, 0, 255, 0.5) !important;
+                }
+
+                &:hover{
+                    cursor: pointer;
+
+                }
+            }
+
+            &-rating{
+                padding: 10px;
+                font-size: 24px;
+                color: rgba(255,0,0, 0.5);
+                font-weight: bold;
+
+                .rating-number{
+                    //display: inline-block;
+                    padding: 5px;
+                    margin-left: 5px;
+                    color: $white;
+                    background-color: $darklyRed;
+                    border-radius: 25px;
+                }
+            }
+
+        }
+    }
+}

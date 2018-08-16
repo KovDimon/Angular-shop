@@ -1,0 +1,43 @@
+<div class="container-fluid header">
+    <div class="row justify-content-around align-items-center">
+        <a [routerLink]="'/'" href="#">
+            <img src="../../../../../assets/img/webshop-logo.png" class="header-img">
+        </a>
+        <ul class="row justify-content-center nav-menu col-md-3">
+            <li class="nav-menu-items">
+                <a class="nav-link nav-link-video nav-link-active" href="#">Videos</a>
+            </li>
+            <li class="nav-menu-items">
+                <a class="nav-link nav-link-books" href="#">Books</a>
+            </li>
+            <li class="nav-menu-items">
+                <a class="nav-link nav-link-games" href="#">Games</a>
+            </li>
+        </ul>
+        <div class="col-md-4">
+            <input class="form-control header-search" type="text" placeholder="Search">
+        </div>
+        <div class="col-md-1">
+            <!--<a [routerLink]="" href="#">-->
+            <button [routerLink]="'/cart'" class="btn btn-default-outline align-items-center header-button">
+                <span class="header-button-img"></span>Cart 
+                <span>{{count()}}</span>
+            </button>
+            <!--</a>-->
+        </div>
+        <div class="row col-md-2 justify-content-center dropdown header-dropdown">
+            <a class="dropdown-toggle header-dropdown-link" href="#" role="button">User
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="">Data</a>
+                </li>
+                <li>
+                    <a href="">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--<img src="assets/img/icons.svg" alt="">-->
