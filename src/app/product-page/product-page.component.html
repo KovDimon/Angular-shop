@@ -4,7 +4,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="row product-content">
-      <div class="content-data">
+      <div *ngIf="!text" class="content-data">
         <div *ngIf="product.year" class="content-parametrs">
           <span class="parametrs-title">Year:
           </span>{{product.year}}
@@ -20,7 +20,17 @@
         </div>
         <div *ngIf="product.authorBiography" class="content-parametrs">
           <span class="parametrs-title">Author Biography:
-          </span>{{product.authorBiography}}
+          </span>
+          <span [innerHTML]="product.authorBiography" class="content-biography"></span>
+        </div>
+
+        <div *ngIf="product.textWithHTML" class="content-parametrs">
+          <span class="parametrs-title">
+            <a (click)="showTextBook($event)" href="#">
+              Extract From The Book
+              <span class="parametrs-img-link"></span>
+            </a>
+          </span>
         </div>
 
         <div *ngIf="product.actors" class="content-parametrs">
@@ -54,9 +64,9 @@
           <span class="parametrs-title">Runtime:
           </span>{{product.runtime}}
         </div>
-        <div *ngIf="product.websites" class="content-parametrs">
+        <div *ngIf="product.websites" class="row align-items-center content-parametrs">
           <span class="parametrs-title">Websites:
-          </span>{{product.websites}}
+          </span><a class="parametrs-link" *ngFor="let website of product.websites" href="{{website.url}}">{{website.name}}</a>
         </div>
         <div *ngIf="product.writers && (product.writers!=='N/A')" class="content-parametrs">
           <span class="parametrs-title">Writers:
@@ -83,12 +93,29 @@
           </button>
         </div>
       </div>
-      <div>
-        <div class="">
-          <img height="450" *ngIf="product.imageUrl" src="{{product.imageUrl}}" alt="{{product.title}}">
+
+      <div *ngIf="text" class="content-data">
+        <div *ngIf="product.year" class="content-parametrs">
+          <span class="parametrs-title">Extract From The Book:
+          </span>
+          <span [innerHTML]="product.textWithHTML"></span>
         </div>
-        <div class="row align-items-center justify-content-center content-rating">Rating: 
-          <span class="rating-number">{{product.rating}}</span>
+        <div *ngIf="product.textWithHTML" class="content-parametrs">
+            <span class="parametrs-title">
+              <a (click)="showTextBook($event)" href="#">
+                Back
+                <span class="parametrs-img-link"></span>
+              </a>
+            </span>
+          </div>
+      </div>
+
+      <div class="">
+        <div class="">
+          <img class="product-img" height="450" *ngIf="product.imageUrl" src="{{product.imageUrl}}" alt="{{product.title}}">
+        </div>
+        <div *ngIf="product.rating" class="row align-items-center justify-content-center content-rating">Rating:
+          <span class="rating-number">{{product.rating | number:'1.1-1'}}</span>
         </div>
       </div>
     </div>

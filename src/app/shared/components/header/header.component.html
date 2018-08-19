@@ -5,23 +5,28 @@
         </a>
         <ul class="row justify-content-center nav-menu col-md-3">
             <li class="nav-menu-items">
-                <a class="nav-link nav-link-video nav-link-active" href="#">Videos</a>
+                <a [routerLink]="['/category', 'video']" routerLinkActive="nav-link-active" class="nav-link nav-link-video" href="#">Videos</a>
             </li>
             <li class="nav-menu-items">
-                <a class="nav-link nav-link-books" href="#">Books</a>
+                <a [routerLink]="['/category', 'books']" routerLinkActive="nav-link-active" class="nav-link nav-link-books" href="#">Books</a>
             </li>
             <li class="nav-menu-items">
-                <a class="nav-link nav-link-games" href="#">Games</a>
+                <a [routerLink]="['/category', 'games']" routerLinkActive="nav-link-active" class="nav-link nav-link-games" href="#">Games</a>
             </li>
         </ul>
-        <div class="col-md-4">
-            <input class="form-control header-search" type="text" placeholder="Search">
-        </div>
+        <form class="col-md-4 header-search" action="#" (ngSubmit)="search(form)" #form="ngForm">
+            <div class="input-group search-group">
+                <span class="input-group-addon">
+                    <button [disabled]="form.invalid" class=" btn btn-default search-button" type="submit"><span class="button-img"></span></button>
+                </span>
+                <input ngModel name="search" class="form-control search-input" type="text" placeholder="Search" required>
+            </div>
+        </form>
         <div class="col-md-1">
             <!--<a [routerLink]="" href="#">-->
             <button [routerLink]="'/cart'" class="btn btn-default-outline align-items-center header-button">
-                <span class="header-button-img"></span>Cart 
-                <span>{{count()}}</span>
+                <span class="header-button-img"></span>Cart
+                <span *ngIf="count()" class="header-button-count">{{count()}}</span>
             </button>
             <!--</a>-->
         </div>

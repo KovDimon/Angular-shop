@@ -27,8 +27,15 @@ export class ProductPageComponent implements OnInit {
 
   private bought: boolean = false;
 
-  constructor(private route: ActivatedRoute, private videoApiService: VideoApiService, private booksApiService: BooksApiService, 
-    private gamesApiService:GamesApiService, private cartService: CartService) { }
+  private text: boolean = false;
+
+  constructor(
+    private route: ActivatedRoute, 
+    private videoApiService: VideoApiService, 
+    private booksApiService: BooksApiService, 
+    private gamesApiService:GamesApiService, 
+    private cartService: CartService
+  ) { }
 
   ngOnInit() {
     /*this.route.params.subscribe(
@@ -49,7 +56,7 @@ export class ProductPageComponent implements OnInit {
   
           case 'books': return this.booksApiService.getBook(this.id);
   
-          case 'game': return this.gamesApiService.getGame(this.id);
+          case 'games': return this.gamesApiService.getGame(this.id);
         }
       })
     ).subscribe(
@@ -65,6 +72,10 @@ export class ProductPageComponent implements OnInit {
     this.bought = true;
     this.cartService.addProduct(this.product);
     setTimeout(() => this.bought = false, 1500);
+  }
 
+  private showTextBook(event){
+    event.preventDefault();
+    this.text ? this.text =false : this.text = true;
   }
 }

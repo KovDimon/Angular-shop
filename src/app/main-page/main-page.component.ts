@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit {
     //Observable.
 
     combineLatest (
-      this.videoApiService.getNewVideos(),
+      this.videoApiService.getNewVideo(),
       this.booksApiService.getNewBooks(),
       this.gamesApiService.getNewGames()
       //this.gamesApiService.getGames();
@@ -36,6 +36,7 @@ export class MainPageComponent implements OnInit {
         this.newDataVideos = newData[0];
         this.newDataVideos.length = 6;
         this.newDataBooks = newData[1];
+        this.newDataBooks.length = 6;
         this.newDataGames = newData[2];
         //this.newDataBooks.length = 6;
         console.log(this.newDataVideos);

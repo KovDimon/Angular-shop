@@ -4,7 +4,7 @@ a {
 }
 
 .main-title {
-  padding: 10px;
+  padding: 20px;
   color: rgba(255, 0, 0, 0.5);
 }
 
@@ -43,9 +43,13 @@ a {
 .main-features .features-img {
   text-align: center;
   width: 150px !important;
+  height: 200px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .main-features .features-title {
+  padding-bottom: 10px;
   text-align: center;
   width: 150px;
   color: red;

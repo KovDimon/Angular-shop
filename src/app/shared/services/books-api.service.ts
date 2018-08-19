@@ -17,17 +17,37 @@ export class BooksApiService {
   public getBook(str:string): Observable<any>{
 
     return this.http.get(`books_api/?isbn=${str}`)
-    .pipe(map((dataBook) => {console.log('Book data received', dataBook); return this.transformItem(dataBook); }));
+    .pipe(map((dataBook: any) => {console.log('Book data received', dataBook); return this.transformItem(dataBook.Extracts[0]); }));
   }
 
   public getNewBooks(): Observable<any>{
 
     return this.http.get(`books_api/?publicationdategreaterthan=2018-01-01T00:00:00Z&publicationdatelessthan=2018-08-15T00:00:00Z`)
     .pipe(map((dataBooksObject: any) => {
-      console.log('123'); 
+      console.log(dataBooksObject); 
       let dataBooks = dataBooksObject.Extracts; 
-      dataBooks.length = 6;
       this.dataBooks=this.transformItems(dataBooks);
+      return this.dataBooks;
+    }));
+  }
+
+  public searchBooks(param): Observable<any>{
+
+    param.minimumDate ? param.minimumDate = `publicationdategreaterthan=${param.minimumDate}T00:00:00Z` : '';
+    param.maximumDate ? param.maximumDate = `publicationdatelessthan=${param.maximumDate}T00:00:00Z` : '';
+    param.authorName ? param.authorName = `authorcontains=${param.authorName}` : '';
+    param.readingTime ? param.readingTime = `readingtimelessthan=${param.readingTime}` : '';
+    param.name ? param.name = `titlecontains==${param.name}` : '';
+
+    console.log(param.maximumDate);
+    console.log(param.minimumDate);
+
+    return this.http.get(`books_api/?${param.minimumDate}&${param.maximumDate}&${param.authorName}&${param.readingTime}&${param.name}`)
+    .pipe(map((dataBooksObject: any) => {
+      console.log('123'); 
+      let dataBooks = dataBooksObject.Extracts;
+      this.dataBooks = this.transformItems(dataBooks);
+      console.log(this.dataBooks); 
       return this.dataBooks;
     }));
   }

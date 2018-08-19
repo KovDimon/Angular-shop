@@ -9,22 +9,23 @@ export class CartService implements OnInit{
 
   private productCart: Product[] = [];
 
-  public changeCounter = new EventEmitter<any>();
-
   private counter: number = 0;
 
-  //public countCart: Observable<any>;
-
-  constructor() { }
+  constructor() {
+    try {
+      if (JSON.parse(localStorage.getItem('cart'))) {
+        this.productCart = JSON.parse(localStorage.getItem('cart'));
+        console.log(this.productCart);
+      } else {
+        this.productCart = [];
+      }
+    } catch (e) {
+      console.log(e);
+      console.log('Failed to get the goods', 'Error!');
+    }
+   }
 
   ngOnInit(){
-    if (JSON.parse(localStorage.getItem('cart'))) {
-      this.productCart = JSON.parse(localStorage.getItem('cart'));
-    } else {
-      this.productCart = [];
-    }
-    //this.counter=this.count();
-    //this.counCart();
   }
 
   public addProduct(product: Product){
@@ -36,7 +37,6 @@ export class CartService implements OnInit{
       product.count = 1;
       this.productCart.push(product);
     }
-    this.changeCounter.emit(this.counter++);
     this.modifyLocalStorage();
   }
 
@@ -59,7 +59,7 @@ export class CartService implements OnInit{
     } else {
       this.productCart.splice(this.productCart.indexOf(foundProduct), 1);
     }
-    this.modifyLocalStorage;
+    this.modifyLocalStorage();
   }
 
   public count(): number{

@@ -1,3 +1,12 @@
+a {
+  text-decoration: none;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+a:hover {
+  color: rgba(0, 0, 255, 0.5);
+}
+
 .product-title {
   padding: 20px 0 10px 0;
   color: rgba(255, 0, 0, 0.5);
@@ -13,7 +22,7 @@
 }
 
 .product-content .content-parametrs {
-  padding: 5px 0;
+  padding: 8px 0;
   word-wrap: normal;
   color: rgba(0, 0, 255, 0.8);
   font-weight: normal;
@@ -22,6 +31,27 @@
 .product-content .content-parametrs .parametrs-title {
   color: rgba(255, 0, 0, 0.5);
   font-weight: bold;
+  position: relative;
+}
+
+.product-content .content-parametrs .parametrs-img-link {
+  content: '';
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -5px;
+  right: -40px;
+  background: url("../../assets/img/icons.png") no-repeat -101px -1407px;
+  background-size: 488px 2111px;
+}
+
+.product-content .content-parametrs .parametrs-link {
+  padding: 0 10px;
+  color: red;
+}
+
+.product-content .content-parametrs .parametrs-link:hover {
+  color: blue;
 }
 
 .product-content .content-price {
@@ -38,6 +68,7 @@
 .product-content .content-data {
   width: 567px;
   height: 450px;
+  margin-right: 20px;
 }
 
 .product-content .content-button {
@@ -81,5 +112,12 @@
   color: white;
   background-color: rgba(255, 0, 0, 0.5);
   border-radius: 25px;
+}
+
+.product-img {
+  width: 300px;
+  height: 450px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=product-page.component.css.map */

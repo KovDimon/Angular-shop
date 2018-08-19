@@ -1,0 +1,54 @@
+$lightRed: rgba(255,0,0, 0.3);
+$red: red;
+$darklyRed: rgba(255,0,0, 0.5);
+
+a{
+    color: $red;
+    text-decoration: none;
+    
+    &:hover{
+        color: blue;
+    }
+}
+
+.main{
+
+    &-title{
+        padding: 20px;
+        color: $darklyRed;
+    }
+}
+
+.content{
+
+    &-products{
+        border-left: 2px solid $lightRed;
+    }
+
+    &-features{
+        margin-top: 20px;  
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .product{
+
+            &-title{
+                padding-bottom: 10px;
+                text-align: center;
+                width: 150px;
+                font-weight: bold;
+            }
+
+            &-img{
+                width: 150px;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            &-price{
+                color: $red;
+            }
+        }
+    }
+}

@@ -1,0 +1,69 @@
+input {
+  margin: 0 10px;
+  border-radius: 5px;
+  color: red;
+  border-color: rgba(0, 0, 255, 0.5);
+}
+
+input:focus {
+  outline: none;
+}
+
+select {
+  color: red;
+  border-color: rgba(0, 0, 255, 0.5);
+}
+
+label {
+  color: red;
+}
+
+.filter-title {
+  padding: 10px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.filter-form {
+  margin-top: 20px;
+}
+
+.filter-element {
+  padding: 10px 0;
+}
+
+.filter-element .element-date {
+  width: 90px;
+}
+
+.filter-element .element-time {
+  width: 50px;
+}
+
+.filter-element .element-button {
+  margin: 0 50px;
+  border-radius: 5px;
+  color: white;
+}
+
+.filter-element .element-button-apply {
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+.filter-element .element-button-reset {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.filter-form {
+  margin-right: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+/*# sourceMappingURL=filter.component.css.map */

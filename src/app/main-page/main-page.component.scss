@@ -11,7 +11,7 @@ a{
 .main{
 
     &-title{
-        padding: 10px;
+        padding: 20px;
         color: $darklyRed;
     }
 
@@ -48,10 +48,12 @@ a{
             &-img{
                 text-align: center;
                 width: 150px !important;
-                //height: 200px !important;
+                height: 200px !important;
+                object-fit: cover;
             }
 
             &-title{
+                padding-bottom: 10px;
                 text-align: center;
                 width: 150px;
                 color: $red;

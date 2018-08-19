@@ -1,0 +1,28 @@
+<div *ngIf="loaded">
+  <div class="container-fluid main">
+    <div class="row justify-content-center main-title">
+      <h1 *ngIf="nameCategory=='video'" class="title">Videos</h1>
+      <h1 *ngIf="nameCategory=='books'" class="title">Books</h1>
+    </div>
+    <div class="row content">
+      <div class="col-md-3 content-filter">
+        <app-filter [categories]="categories" (resetItems)="resetItems()" (filterItems)="changeItems($event)"></app-filter>
+      </div>
+      <div class="col-md-9 content-products">
+        <div class="row align-items-end justify-content-between">
+          <div *ngFor="let product of products" class="col-md-4 content-features">
+            <div class="product-title">
+              <a [routerLink]="['/product-page', product.type, product.id]">{{product.title}}</a>
+            </div>
+            <div class="content-img">
+              <img class="product-img" *ngIf="product.imageUrl && (product.imageUrl!=='N/A')" src="{{product.imageUrl}}" alt="{{product.title}}">
+            </div>
+            <div class="pruduct-buy">
+              <div class="product-price">{{product.year}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

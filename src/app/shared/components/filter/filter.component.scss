@@ -1,0 +1,71 @@
+$lightRed: rgba(255,0,0, 0.3);
+$red: red;
+$darklyRed: rgba(255,0,0, 0.5);
+$lightBlue: rgba(0,0,255, 0.5); 
+
+input{
+    margin: 0 10px;
+    border-radius: 5px;
+    color: $red;
+    border-color: $lightBlue;
+    
+    &:focus{
+        outline: none;
+    }
+}
+
+select{
+    color: $red;
+    border-color: $lightBlue;
+}
+
+label{
+    color: $red;
+}
+        .filter{
+
+            &-title{
+                padding: 10px;
+                color: $darklyRed;
+            }
+
+            &-form{
+                margin-top: 20px;
+            }
+
+            &-element{
+                padding: 10px 0;
+
+                .element{
+
+                    &-date{
+                        width: 90px;
+                    }
+
+                    &-time{
+                        width: 50px;
+                    }
+
+                    &-button{
+                        margin: 0 50px;
+                        border-radius: 5px;
+                        color: white;
+                    }
+
+                    &-button-apply{
+                        background-color: rgba(0, 0, 255, 0.5);
+                    }
+
+                    &-button-reset{
+                        background-color: $darklyRed;
+                    }
+                }
+            }
+
+            &-form{
+                margin-right: 0px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+        }

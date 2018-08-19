@@ -3,6 +3,15 @@ $red: red;
 $darklyRed: rgba(255, 0, 0, 0.5);
 $white: white;
 
+a{
+    text-decoration: none;
+    color: $darklyRed;
+
+    &:hover{
+        color: rgba(0,0,255, 0.5);
+    }
+}
+
 .product{
     &-title{
         padding: 20px 0 10px 0;
@@ -17,14 +26,38 @@ $white: white;
             color: $red;
 
             &-parametrs{
-                padding: 5px 0;
+                padding: 8px 0;
                 word-wrap: normal;
                 color: rgba(0, 0, 255, 0.8);
                 font-weight: normal;
 
-                .parametrs-title{
-                    color: rgba(255,0,0, 0.5);
-                    font-weight: bold;
+                .parametrs{
+
+                    &-title{
+                        color: rgba(255,0,0, 0.5);
+                        font-weight: bold;
+                        position: relative;
+                    }
+    
+                    &-img-link{
+                        content: '';
+                        width: 32px;
+                        height: 32px;
+                        position: absolute;
+                        top: -5px;
+                        right: -40px;
+                        background: url('../../assets/img/icons.png') no-repeat -101px -1407px;
+                        background-size: 488px 2111px;
+                    }
+
+                    &-link{
+                        padding: 0 10px;
+                        color: $red;
+
+                        &:hover{
+                            color: blue;
+                        }
+                    }
                 }
             }
 
@@ -42,6 +75,7 @@ $white: white;
             &-data{
                 width: 567px;
                 height: 450px;
+                margin-right: 20px;
             }
 
             &-button{
@@ -93,5 +127,11 @@ $white: white;
             }
 
         }
+    }
+
+    &-img{
+        width: 300px;
+        height: 450px;
+        object-fit: cover;
     }
 }

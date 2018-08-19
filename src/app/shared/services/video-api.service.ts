@@ -23,14 +23,29 @@ export class VideoApiService {
     .pipe(map(dataVideo => {console.log('Video data received'); return this.transformItem(dataVideo); }));
   }
 
-  public getNewVideos(): Observable<any>{
+  public getNewVideo(): Observable<any>{
 
     return this.http.get(`movies_api/?apikey=1a8fdd0&s=new&y=${this.date.getFullYear()}`)
     .pipe(map((dataVideoObject: any) => {
       console.log('123'); 
+      console.log(dataVideoObject);
+
       let dataVideo = dataVideoObject.Search;
-      dataVideo.length = 6;
       this.dataVideos = this.transformItems(dataVideo);
+      this.dataVideos = this.dataVideos.filter(obj => obj.imageUrl !== 'N/A');
+       
+      return this.dataVideos;
+    }));
+  }
+
+  public searchVideo(name: string = 'new',year: string = `${this.date.getFullYear()}`, type: string = ''): Observable<any>{
+
+    return this.http.get(`movies_api/?apikey=1a8fdd0&s=${name}&y=${year}&type=${type}`)
+    .pipe(map((dataVideoObject: any) => {
+      console.log('123'); 
+      let dataVideo = dataVideoObject.Search;
+      this.dataVideos = this.transformItems(dataVideo);
+      this.dataVideos = this.dataVideos.filter(obj => obj.imageUrl !== 'N/A');
       console.log(this.dataVideos); 
       return this.dataVideos;
     }));

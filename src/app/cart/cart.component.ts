@@ -21,14 +21,11 @@ export class CartComponent implements OnInit {
     this.total = this.cartService.totalPrice();
   }
 
-  /*public sumPrice(){
-    this.listProducts.forEach(obj => this.sum += obj.price);
-  }*/
-
-  deleteProduct(product){
-    console.log(event);
+  deleteProduct(product:Product){
+    console.log(product);
     this.cartService.removeProduct(product);
     this.listProducts = this.cartService.getCart();
+    this.total = this.cartService.totalPrice();
   }
 
 }

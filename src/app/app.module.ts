@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +11,9 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CartComponent } from './cart/cart.component';
-import { CartProductComponent } from './cart/cart-product/cart-product.component';
+import { CategoryPageComponent } from './category-page/category-page.component';
+import { FilterComponent } from './shared/components/filter/filter.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -20,13 +23,16 @@ import { CartProductComponent } from './cart/cart-product/cart-product.component
     HeaderComponent,
     ProductPageComponent,
     CartComponent,
-    CartProductComponent
+    CategoryPageComponent,
+    FilterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [VideoApiService],
   bootstrap: [AppComponent]

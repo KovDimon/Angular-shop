@@ -1,0 +1,56 @@
+<div class="row justify-content-center filter-title">
+  <h2>Filter</h2>
+</div>
+<form class="row justify-content-center filter-form">
+  <div *ngIf="categories.books" class="row justify-content-center filter-element">
+    <label>Author Name
+      <input [(ngModel)]="authorName" name="author" type="text" placeholder="jhon">
+    </label>
+  </div>
+  <div *ngIf="categories.video || categories.books" class="row align-items-center filter-element">
+    <label for="year">Maximum Date of Release</label>
+    <input class="element-date" [(ngModel)]="maximumDate" name="years" id="year" placeholder="01.01.2018">
+  </div>
+  <div *ngIf="categories.books" class="row justify-content-center filter-element">
+    <label> Minimum Date of Release
+      <input class="element-date" [(ngModel)]="minimumDate" name="years"placeholder="01.01.2018">
+    </label>
+  </div>
+
+  <div *ngIf="categories.books" class="row justify-content-center filter-element">
+    <label>Maximum Reading Time
+      <input class="element-time" [(ngModel)]="ReadingTime" name="estimatedReadingTime" placeholder="10">
+    </label>
+  </div>
+  <div *ngIf="categories.video" class="filter-element">
+    <label>TypeVideo
+      <select [(ngModel)]="typeVideo" name="estimatedReadingTime">
+        <option value="all" selected>all</option>
+        <option value="movie">movie</option>
+        <option value="series">series</option>
+        <option value="episodes">episodes</option>
+      </select>
+    </label>
+    <!--<div>
+      Type Video
+    </div>
+    <div class="">
+      <label>All
+        <input [(ngModel)]="typeVideo" type="radio" name="type" value="all" (change)="changeItems()" checked>
+      </label>
+      <label>Movie
+        <input [(ngModel)]="typeVideo" type="radio" name="type" value="movie" (change)="changeItems()">
+      </label>
+      <label>Series
+        <input [(ngModel)]="typeVideo" type="radio" name="type" value="series" (change)="changeItems()">
+      </label>
+      <label>Episode
+        <input [(ngModel)]="typeVideo" type="radio" name="type" value="episode" (change)="changeItems()">
+      </label>
+    </div>-->
+  </div>
+  <div class="row justify-content-between filter-element">
+    <button class="element-button element-button-apply" type="submit" (click)="changeParametrs()">Apply</button>
+    <button class="element-button element-button-reset" type="reset" (click)="reset()">Reset</button>
+  </div>
+</form>
