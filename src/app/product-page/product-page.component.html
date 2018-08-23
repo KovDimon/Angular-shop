@@ -111,8 +111,11 @@
       </div>
 
       <div class="">
-        <div class="">
-          <img class="product-img" height="450" *ngIf="product.imageUrl" src="{{product.imageUrl}}" alt="{{product.title}}">
+        <div class="row align-items-center justify-content-center product-img-wrap">
+          <div *ngIf="!product.imageUrl" class="product-img-wrap-text">
+            No Image
+          </div>
+          <img class="product-img" *ngIf="product.imageUrl" src="{{product.imageUrl}}" alt="{{product.title}}">
         </div>
         <div *ngIf="product.rating" class="row align-items-center justify-content-center content-rating">Rating:
           <span class="rating-number">{{product.rating | number:'1.1-1'}}</span>

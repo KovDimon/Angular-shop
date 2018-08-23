@@ -1,0 +1,23 @@
+<form [formGroup]="form" class="row justify-content-end address-add-items">
+    <div class="row align-items-center justify-content-between item-info">
+      <span class="item-name">Country:</span>
+      <input formControlName="country" [ngClass]="{'item-field-valid': form.get('country').valid}" [(ngModel)]="country" class="item-field" type="text">
+    </div>
+    <div class="row align-items-center justify-content-between item-info">
+      <span class="item-name">State / Region:</span>
+      <input formControlName="state" [ngClass]="{'item-field-valid': form.get('state').valid}" [(ngModel)]="state" class="item-field" type="text">
+    </div>
+    <div class="row align-items-center justify-content-between item-info">
+      <span class="item-name">City:</span>
+      <input formControlName="city" [ngClass]="{'item-field-valid': form.get('city').valid}" [(ngModel)]="city" class="item-field" type="text">
+    </div>
+    <div class="row align-items-center justify-content-between item-info">
+      <span class="item-name">Street Address:</span>
+      <input formControlName="streetAddress" [ngClass]="{'item-field-valid': form.get('streetAddress').valid}" [(ngModel)]="streetAddress" class="item-field" type="text">
+    </div>
+    <div class="row align-items-center justify-content-between item-info">
+      <span class="item-name">Zip/Postal Code:</span>
+      <input formControlName="zip" [ngClass]="{'item-field-valid': form.get('zip').valid}" [(ngModel)]="zip" class="item-field" type="text">
+    </div>
+    <button class="button" (click)="add(form)" [disabled]="form.invalid">Add Adress</button>
+  </form>

@@ -1,0 +1,78 @@
+.address-features {
+  margin: 10px;
+  padding: 5px;
+  padding-top: 40px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 460px;
+  position: relative;
+}
+
+.address-features .address-text {
+  padding: 0;
+  color: blue;
+  font-weight: normal;
+}
+
+.address-features input {
+  width: 290px;
+  color: blue;
+  border: none;
+}
+
+.address-features input:focus {
+  outline: none;
+}
+
+.address-features p {
+  color: blue;
+}
+
+.address-features span {
+  padding: 0 10px;
+  color: rgba(255, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.address-features-delete {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background: url("../../../../assets/img/icons.png") no-repeat -228px -1894px;
+  background-size: 488px 2111px;
+}
+
+.address-features-delete:hover {
+  cursor: pointer;
+}
+
+.address-features-edit {
+  position: absolute;
+  top: 0px;
+  right: 40px;
+  width: 32px;
+  height: 32px;
+  background: url("../../../../assets/img/icons.png") no-repeat -351px -291px;
+  background-size: 488px 2111px;
+}
+
+.address-features-edit:hover {
+  cursor: pointer;
+}
+
+.address-features-save {
+  position: absolute;
+  top: 0px;
+  right: 40px;
+  width: 32px;
+  height: 32px;
+  background: url("../../../../assets/img/icons.png") no-repeat -351px -918px;
+  background-size: 488px 2111px;
+}
+
+.address-features-save:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=address-display.component.css.map */

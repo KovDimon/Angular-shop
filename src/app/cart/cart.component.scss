@@ -21,6 +21,17 @@ a{
         color: $darklyRed;
     }
 
+    &-logged-info{
+        width: 300px;
+        padding: 10px;
+        position: absolute;
+        top: 205px;
+        left: 20px;
+        color: $darklyRed;
+        background-color: $lightRed;
+        border-radius: 10px;
+    }
+
     &-product{
         padding: 15px;
         color: $red;

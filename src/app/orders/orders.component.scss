@@ -1,0 +1,25 @@
+$lightRed: rgba(255,0,0, 0.3);
+$red: red;
+$darklyRed: rgba(255,0,0, 0.5);
+
+.orders{
+
+    &-title{
+        padding: 20px;
+        color: $darklyRed;
+        //border-bottom: 2px solid $lightRed;
+    }
+
+    &-content{
+        margin-top: 20px;
+
+    }
+
+    &-table{
+        //border: 2px solid $lightRed;
+        color: rgba(0,0,255,0.5);
+    }
+
+
+
+}

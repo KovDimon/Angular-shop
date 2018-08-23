@@ -26,6 +26,8 @@ export class FilterComponent implements OnInit {
 
   private readingTime: string = '';
 
+  private gamesRating : string ='';
+
   constructor() { }
 
   ngOnInit() {
@@ -44,11 +46,11 @@ export class FilterComponent implements OnInit {
     this.filterItems.emit({
       yearOfRelease: this.maximumDate.slice(6,10),
       typeVideo: this.typeVideo,
-      maximumDate: `${this.maximumDate.slice(6,10)}-${this.maximumDate.slice(3,5)}-
-      ${this.maximumDate.slice(0,2)}`,
-      minimumDate: `${this.minimumDate.slice(6,10)}-${this.minimumDate.slice(3,5)}-
-      ${this.minimumDate.slice(0,2)}`,
-      readingTime: this.readingTime
+      maximumDate: `${this.maximumDate.slice(6,10)}-${this.maximumDate.slice(3,5)}-${this.maximumDate.slice(0,2)}`,
+      minimumDate: `${this.minimumDate.slice(6,10)}-${this.minimumDate.slice(3,5)}-${this.minimumDate.slice(0,2)}`,
+      readingTime: this.readingTime,
+      authorName: this.authorName,
+      gamesRating: this.gamesRating
     });
 
     /*switch(this.nameCategory){

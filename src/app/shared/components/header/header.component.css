@@ -62,6 +62,52 @@ li {
   display: block;
 }
 
+.header-dropdown-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 140px;
+  position: relative;
+}
+
+.header-dropdown-caret {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  background: url("../../../../assets/img/icons.png") no-repeat -351px -1613px;
+  background-size: 488px 2111px;
+}
+
+.header-dropdown-menu {
+  padding: 0;
+  width: 300px;
+  position: absolute;
+  top: 59px;
+  right: 75px;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+.header-dropdown-menu-hide {
+  display: none !important;
+}
+
+.header-dropdown-menu li {
+  padding: 10px;
+}
+
+.header-dropdown-menu a {
+  color: white;
+}
+
+.header-dropdown-menu a:hover {
+  text-decoration: underline;
+}
+
 .nav-menu {
   margin: 0;
 }

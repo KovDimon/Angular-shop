@@ -28,7 +28,7 @@ export class GamesApiService {
 
   public getNewGames(): Observable<any>{
 
-    return this.http.get(`games_api/games/?fields=name,release_dates,cover,popularity&order=popularity:desc&limit=6`,{
+    return this.http.get(`games_api/games/?fields=name,release_dates,cover,rating&order=popularity:desc&limit=10`,{
       headers: this.headers
     })
     .pipe(map((dataGames: any[]) => {
@@ -38,13 +38,24 @@ export class GamesApiService {
   }));
   }
 
-  searchGames(param): Observable<any>{
-
-    return this.http.get(`games_api/games/?fields=name,release_dates,cover,popularity&order=popularity:desc&limit=10`,{
+  searchGames(name: string, params?): Observable<any>{
+    let minimumDate,maximumDate, rating, nameGame;
+    nameGame = name ? `search=${name}`: '';
+    console.log(params);
+    if(params){
+      maximumDate = params.maximumDate ? `&filter[release_dates.date][eq]=${params.maximumDate}` : '';
+      rating = params.gamesRating ? `&filter[rating][gte]=${params.gamesRating*10}`: '';
+    }else{
+      maximumDate = '';
+      minimumDate = '';
+      rating = '';
+    }
+    //name,release_dates,cover,rating
+    return this.http.get(`games_api/games/?${nameGame}&fields=name,release_dates,cover,rating${rating}${maximumDate}`,{
       headers: this.headers
     })
     .pipe(map((dataGames: any[]) => {
-      console.log('123'); 
+      console.log(dataGames); 
       this.dataGames = this.transformItems(dataGames);
       return this.dataGames;
   }));
@@ -57,9 +68,9 @@ export class GamesApiService {
       product.type = 'games';
       product.title = obj.name;
       product.imageUrl = obj.cover ? 
-      `https://images.igdb.com/igdb/image/upload/t_screenshot_med/${obj.cover.cloudinary_id}.jpg` : obj.cover.url;
+      `https://images.igdb.com/igdb/image/upload/t_screenshot_med/${obj.cover.cloudinary_id}.jpg` : '';
       product.description = obj.summary ? obj.summary : '';
-      product.year = obj.release_dates[0].human.slice(0,4);
+      product.year = obj.release_dates ? obj.release_dates[0].human.slice(0,4) : '';
       product.trailer = obj.videos ? obj.videos[0].video_id : '';
       product.websites = obj.websites ? obj.websites : '';
       product.price = obj.total_rating ? Math.floor(obj.total_rating/4) : Math.ceil(Math.random()*10+10);
@@ -79,9 +90,9 @@ export class GamesApiService {
       product.type = 'games';
       product.title = obj.name;
       product.imageUrl = obj.cover ? 
-      `https://images.igdb.com/igdb/image/upload/t_screenshot_med/${obj.cover.cloudinary_id}.jpg` : obj.cover.url;
+      `https://images.igdb.com/igdb/image/upload/t_screenshot_med/${obj.cover.cloudinary_id}.jpg` : '';
       product.description = obj.summary ? obj.summary : '';
-      product.year = obj.release_dates[0].human.slice(0,4);
+      product.year = obj.release_dates ? obj.release_dates[0].human.slice(0,4) : '';
       product.trailer = obj.videos ? obj.videos[0].video_id : '';
       product.websites = obj.websites ? obj.websites.map(obj => {
         //let text = obj.url.slice(8);

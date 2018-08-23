@@ -1,0 +1,20 @@
+<div *ngIf="authService.isLoaded">
+  <div class="container-fluid address">
+    <div class="row justify-content-center address-title">
+      <h1 class="title">Address</h1>
+    </div>
+    <div class="row address-content">
+      <div class=" col-md-3 address-add">
+        <h2 class="address-subtitle">
+          Add
+        </h2>
+        <app-address-form (addAddress)="addAddress($event)"></app-address-form>
+      </div>
+
+      <div class="row align-items-center justify-content-start col-md-8 address-list">
+        <app-address-display (saveAddress)="saveAddress($event)" (removeAddress)="removeAddress($event)" *ngFor="let address of addresses" [address]="address"></app-address-display>
+      </div>
+
+    </div>
+  </div>
+</div>

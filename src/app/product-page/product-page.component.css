@@ -114,6 +114,17 @@ a:hover {
   border-radius: 25px;
 }
 
+.product-img-wrap {
+  width: 300px;
+  height: 450px;
+  background-color: lightgrey;
+}
+
+.product-img-wrap-text {
+  font-size: 32px;
+  color: grey;
+}
+
 .product-img {
   width: 300px;
   height: 450px;

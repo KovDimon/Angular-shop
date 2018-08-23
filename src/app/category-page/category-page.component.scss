@@ -25,6 +25,18 @@ a{
         border-left: 2px solid $lightRed;
     }
 
+    &-img{
+        width: 150px;
+        height: 200px;
+        background-color: lightgrey;
+    }
+
+    &-img-text{
+        font-size: 24px;
+        color: grey;
+
+    }
+
     &-features{
         margin-top: 20px;  
         display: flex;

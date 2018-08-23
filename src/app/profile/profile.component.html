@@ -1,0 +1,51 @@
+<div *ngIf="authService.isLoaded">
+  <div class="container profile">
+    <div class="row justify-content-center profile-title">
+      <h1 class="title">Profile</h1>
+    </div>
+    <form class="row justify-content-center profile-content">
+      <div class="col-md-8 profile-items">
+        <div class="row align-items-center justify-content-between item-info">
+          <span class="item-name">Country:</span>
+          <input name="country" [(ngModel)]="profile.country" class="item-field" type="text">
+        </div>
+        <div class="row align-items-center justify-content-between item-info">
+          <span class="item-name">Currency:</span>
+          <select name="currency" [(ngModel)]="profile.currency" class="item-field" name="currency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="RUB">RUB</option>
+          </select>
+        </div>
+        <div class="row align-items-center justify-content-between item-info">
+          <span class="item-name">First name:</span>
+          <input name="firstname" [(ngModel)]="profile.firstName" class="item-field" type="text">
+        </div>
+        <div class="row align-items-center justify-content-between item-info">
+          <span class="item-name">Last name:</span>
+          <input name="lastname" [(ngModel)]="profile.lastName" class="item-field" type="text">
+        </div>
+        <div class="row align-items-center justify-content-between item-info">
+          <span class="item-name">E-mail:</span>
+          <input name="email" [(ngModel)]="profile.email" class="item-field" type="text">
+        </div>
+        <div class="row align-items-center justify-content-between item-info">
+          <span class="item-name">Phone:</span>
+          <input name="phone" [(ngModel)]="profile.phone" class="item-field" type="text">
+        </div>
+        <div class="row align-items-center justify-content-between item-info">
+          <span class="item-name">Mobile:</span>
+          <input name="mobile" [(ngModel)]="profile.mobile" class="item-field" type="text">
+        </div>
+      </div>
+      <div class="col-md-4 profile-apply">
+        <div>
+          <img class="profile-img" src="{{profile.picture}}" alt="">
+        </div>
+        <div class="profile-button">
+          <button class="button" type="submit" (click)="save()">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

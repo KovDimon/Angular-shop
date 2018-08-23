@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable, ObservableInput } from 'rxjs';
 
 import { Product } from '../shared/models/product';
 import { VideoApiService } from '../shared/services/video-api.service';
 import { BooksApiService } from '../shared/services/books-api.service';
 import { GamesApiService } from '../shared/services/games-api.service';
 import { Categories } from '../shared/models/categories';
+import { mergeMap } from 'rxjs/operators';
 
 
 @Component({
@@ -22,6 +23,8 @@ export class SearchComponent implements OnInit {
 
   private categories: Categories={};
 
+  private isEmptySearch: boolean = false;
+
   private query: string;
   constructor(
     private route: ActivatedRoute,
@@ -36,39 +39,54 @@ export class SearchComponent implements OnInit {
     this.categories.video = true;
     this.categories.games = true;
 
-    this.route.queryParams.pipe()
-    .subscribe(
-      (params: Params) => {
-        console.log('Data', params);
-        this.search(params);
-        this.loaded = true;
-    });
+    this.changeItems();
+
   }
 
-  private search(params: Params){
+  private changeItems(parametrs?){
+    this.loaded = false;
+    this.isEmptySearch = false;
+    console.log(parametrs);
 
-    combineLatest(
-      this.videoApiService.searchVideo(params.query),
-      this.booksApiService.searchBooks({name: params.query})
-      //games
-    ).subscribe(
+    this.route.queryParams.pipe(mergeMap(
+      (params: Params): ObservableInput<any> => {
+        return combineLatest(
+          this.videoApiService.searchVideo(params.query, parametrs),
+          this.booksApiService.searchBooks(params.query, parametrs),
+          this.gamesApiService.searchGames(params.query, parametrs)
+        )
+      })).subscribe(
       data => {
-
-        if (params.video) {
-          if(data[0]){
-            data[0].length = 6
-            this.products = data[0];
+        console.log(data);
+        if (this.categories.video) {
+          if(data[0].length > 6){
+              this.products.length = 6;
           }
+          this.products = data[0];
         }
 
-        if (params.books) {
-          if(data[1]){
-            data[1].length = 6
-            this.products.concat(data[1]);
+        if (this.categories.books) {
+          if(data[1].length > 6){
+              data[1].length = 6;
           }
+          this.products = this.products.concat(data[1]);
         }
-        console.log(this.products);
-      });
+
+        if (this.categories.games) {
+          if(data[2].length > 6){
+              data[2].length = 6;
+          }
+          this.products = this.products.concat(data[2]);
+        }
+          console.log(this.isEmptySearch)
+          if(!this.products.length){
+            this.isEmptySearch = true;
+          }
+          console.log(this.isEmptySearch)
+        this.loaded = true;
+    });
+
+    
 
     /*let observables = [];
     if (params.video) {

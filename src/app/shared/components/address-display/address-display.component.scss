@@ -1,0 +1,88 @@
+$lightRed: rgba(255,0,0, 0.3);
+$red: red;
+$darklyRed: rgba(255,0,0, 0.5);
+
+.address{
+
+    &-features{
+        margin: 10px;
+        padding: 5px;
+        padding-top: 40px;
+        background-color: rgba(255, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 460px;
+        position: relative;
+
+        .address-text{
+            padding: 0;
+            color: blue;
+            font-weight: normal;
+        }
+
+        input{
+            width: 290px;
+            color: blue;
+            border: none;
+
+            &:focus{
+                outline: none
+            }
+        }
+
+        p{
+            color: blue;
+        }
+
+        span{
+            padding: 0 10px;
+            color: $darklyRed;
+            font-weight: bold;
+        }
+
+        &-delete{
+            position: absolute;
+            top: 0px;
+            right: 0;
+            width: 32px;
+            height: 32px;
+            background: url('../../../../assets/img/icons.png') no-repeat -228px -1894px; //-140px -230px;
+            background-size: 488px 2111px;
+
+            &:hover{
+                cursor: pointer;
+            }
+
+        }
+
+        &-edit{
+            position: absolute;
+            top: 0px;
+            right: 40px;
+            width: 32px;
+            height: 32px;
+            background: url('../../../../assets/img/icons.png') no-repeat -351px -291px; //-140px -230px;
+            background-size: 488px 2111px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+        &-save{
+            position: absolute;
+            top: 0px;
+            right: 40px;
+            width: 32px;
+            height: 32px;
+            background: url('../../../../assets/img/icons.png') no-repeat -351px -918px; //-140px -230px;
+            background-size: 488px 2111px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+    }
+
+
+}

@@ -56,13 +56,15 @@ export class CategoryPageComponent implements OnInit {
         this.categories.books = false;
         this.categories.video = false;
         this.categories.games = false;
+
+        this.nameCategory = params['nameCategory'];
        
-        switch(params['nameCategory']){
+        switch(this.nameCategory){
           case 'video':  this.categories.video = true; return this.videoApiService.getNewVideo();
   
           case 'books': this.categories.books = true; return this.booksApiService.getNewBooks();
   
-          //case 'games': return this.gamesApiService.getGame(this.id);
+          case 'games': this.categories.games = true; return this.gamesApiService.getNewGames();
         }
       })
     ).subscribe(
@@ -78,21 +80,20 @@ export class CategoryPageComponent implements OnInit {
   public changeItems(params){
 
     switch(this.nameCategory){
-      case 'video': this.videoApiService.searchVideo('new',params.yearOfRelease, params.typeVideo).subscribe(
+      case 'video': this.videoApiService.searchVideo('new', params).subscribe(
         dataVideo => this.products = dataVideo,
         error => console.log("ERROR: data video don't got")
       ); break;
       
-      case 'books': this.booksApiService.searchBooks(params).subscribe(
+      case 'books': this.booksApiService.searchBooks('', params).subscribe(
         dataBooks => this.products = dataBooks,
-        error => console.log("ERROR: data video don't got")
+        error => console.log("ERROR: data books don't got")
       ); break;
 
-      /*case 'games': this.gamesApiService.searchGames().subscribe(
-
-      );*/
-
-      default: 
+      case 'games': this.gamesApiService.searchGames('', params).subscribe(
+        dataGames => this.products = dataGames,
+        error => console.log("ERROR: data games don't got")
+      );
     }
   }
 
@@ -105,14 +106,13 @@ export class CategoryPageComponent implements OnInit {
       
       case 'books': this.booksApiService.getNewBooks().subscribe(
         dataBooks => this.products = dataBooks,
-        error => console.log("ERROR: data video don't got")
+        error => console.log("ERROR: data books don't got")
       ); break;
 
-      /*case 'games': this.gamesApiService.searchGames().subscribe(
-
-      );*/
-
-      default: 
+      case 'games': this.gamesApiService.getNewGames().subscribe(
+        dataGames => this.products = dataGames,
+        error => console.log("ERROR: data games don't got")
+      );
     }
   }
 

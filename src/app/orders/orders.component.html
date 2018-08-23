@@ -1,0 +1,38 @@
+<div class="container orders">
+  <div class="row justify-content-center orders-title">
+    <h1 class="title">Orders</h1>
+  </div>
+  <div class=" col-md-12 orders-content">
+    <table class="table orders-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Count</th>
+          <th>Payment method</th>
+          <th>Total price</th>
+          <th>Download</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>order.createdAt</td>
+          <td>calcCount(order)</td>
+          <td>order.payment</td>
+          <td>user.currency order.total</td>
+          <td>
+            <span class="glyphicon glyphicon-download-alt" (click)="getInvoice(order)"></span>
+          </td>
+          <td class="show-order" *ngIf="currentOrder !== order">
+            <a (click)="(show(order))">Show more</a>
+          </td>
+          <td class="show-order" *ngIf="currentOrder === order">
+            <a (click)="(show(null))">Hide details</a>
+          </td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+
+</div>

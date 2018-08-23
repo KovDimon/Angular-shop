@@ -9,15 +9,24 @@
         <app-filter [categories]="categories" (resetItems)="resetItems()" (filterItems)="changeItems($event)"></app-filter>
       </div>
       <div class="col-md-9 content-products">
-        <div class="row align-items-end justify-content-between">
+        <div *ngIf="isEmptySearch" class="row justify-content-center main-title">
+          <h2 class="title">
+            Search input is empty!
+          </h2>
+        </div>
+        <div *ngIf="products.length!==0 && loaded" class="row align-items-end justify-content-between">
           <div *ngFor="let product of products" class="col-md-4 content-features">
             <div class="product-title">
               <a [routerLink]="['/product-page', product.type, product.id]">{{product.title}}</a>
             </div>
-            <div class="content-img">
-              <img class="product-img" *ngIf="product.imageUrl && (product.imageUrl!=='N/A')" src="{{product.imageUrl}}" alt="{{product.title}}">
+            <div class="row align-items-center justify-content-center content-img">
+              <div *ngIf="!product.imageUrl" class="content-img-text">
+                No Image
+              </div>
+              <img class="product-img" *ngIf="product.imageUrl" src="{{product.imageUrl}}" alt="{{product.title}}">
             </div>
-            <div class="pruduct-buy">
+            <div class="row justify-content-center pruduct-buy">
+              <div class="product-price">{{product.type}}</div>
               <div class="product-price">{{product.year}}</div>
             </div>
           </div>

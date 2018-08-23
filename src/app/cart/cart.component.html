@@ -1,5 +1,5 @@
 <div class="row justify-content-center product">
-  <h2 class="cart-title">CART</h2>
+  <h1 class="cart-title">Cart</h1>
 </div>
 <div class="container cart">
   <div *ngFor="let product of listProducts" class="row justify-content-center cart-product">
@@ -27,9 +27,12 @@
     <div class="cart-total-title">
         <h2>Total: <span>{{total | currency:'USD':'symbol-narrow'}}</span></h2>
     </div>
-    <button class="cart-total-checkout">
+    <button (click)="checkout()" class="cart-total-checkout" [disabled]="!authService.isAuthenticated()">
       Checkout
     </button>
+  </div>
+  <div *ngIf="!authService.isAuthenticated()" class="cart-logged">
+    <h2 class="cart-logged-info">For payment you must be logged in!</h2>
   </div>
 
 </div>

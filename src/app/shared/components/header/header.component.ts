@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { CartService } from '../../services/cart.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,13 +15,21 @@ export class HeaderComponent implements OnInit {
 
   private counter: number = 0;
 
+  private profile: any;
+
+  private isShow: boolean = false;
+
   constructor(
-    private cartService: CartService, 
+    private cartService: CartService,
+    private authService: AuthService, 
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    if(localStorage.getItem('id_token')){
+      this.authService.getUser((err, profile) => this.profile = profile);
+    }
   }
 
   public count(): number{
@@ -36,10 +45,40 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['./search'], {
       queryParams: {
         query: form.value.search,
-        books: true,
-        games: true,
-        video: true
-      }
+       }
     });
   }
+
+  public navigate(event, string){
+    event.preventDefault();
+    this.isShow = false;
+    this.router.navigate([`${string}`]);
+  }
+
+  public login(event){
+    event.preventDefault();
+    this.authService.login();
+    //this.authService.getProfile();
+  }
+
+  public logout(event){
+    this.isShow = !this.isShow;
+    event.preventDefault();
+    this.authService.logout();
+  }
+
+  public getUserName(): string{
+    let userProfile;
+    /*this.authService.getUser((err, profile) => {
+      userProfile = profile;
+    });*/
+    return userProfile.nickname;
+  }
+
+  private dropDown(event){
+    event.preventDefault();
+    this.isShow = !this.isShow;
+  }
+
+
 }

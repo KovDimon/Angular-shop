@@ -1,0 +1,94 @@
+a {
+  text-decoration: none;
+}
+
+.checkout-title {
+  padding: 20px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.checkout-subtitle {
+  padding: 20px 60px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.checkout-pagination {
+  border-bottom: 2px solid rgba(255, 0, 0, 0.3);
+}
+
+.checkout-pagination .pagination-previos {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: url("../../assets/img/icons.png") no-repeat -381px -2124px;
+  background-size: 1093px 2562px;
+}
+
+.checkout-pagination .pagination-previos:hover {
+  cursor: pointer;
+}
+
+.checkout-pagination .pagination-next {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: url("../../assets/img/icons.png") no-repeat -520px -2124px;
+  background-size: 1093px 2562px;
+}
+
+.checkout-pagination .pagination-next:hover {
+  cursor: pointer;
+}
+
+.checkout-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.checkout-details .promo-code {
+  margin: 50px;
+}
+
+.checkout-table {
+  color: rgba(255, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+.checkout-table tr {
+  color: blue;
+  border-bottom: 2px solid rgba(0, 0, 255, 0.5);
+}
+
+.checkout-table th {
+  color: rgba(255, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.checkout-table td {
+  padding: 10px;
+}
+
+.checkout-address {
+  margin-top: 20px;
+}
+
+.checkout-payment-type {
+  margin: 30px;
+}
+
+.checkout-payment h3 {
+  margin: 0 20px;
+}
+
+.checkout-payment-button {
+  margin: 50px 0;
+}
+/*# sourceMappingURL=checkout.component.css.map */

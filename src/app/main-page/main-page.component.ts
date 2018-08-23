@@ -38,6 +38,7 @@ export class MainPageComponent implements OnInit {
         this.newDataBooks = newData[1];
         this.newDataBooks.length = 6;
         this.newDataGames = newData[2];
+        this.newDataGames.length =6;
         //this.newDataBooks.length = 6;
         console.log(this.newDataVideos);
         console.log(this.newDataBooks);

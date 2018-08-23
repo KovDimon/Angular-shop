@@ -129,6 +129,18 @@ a{
         }
     }
 
+    &-img-wrap{
+        width: 300px;
+        height: 450px;
+        background-color: lightgrey;
+
+    }
+
+    &-img-wrap-text{
+        font-size: 32px;
+        color: grey;
+    }
+
     &-img{
         width: 300px;
         height: 450px;

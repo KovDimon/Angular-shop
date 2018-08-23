@@ -32,21 +32,32 @@ export class VideoApiService {
 
       let dataVideo = dataVideoObject.Search;
       this.dataVideos = this.transformItems(dataVideo);
-      this.dataVideos = this.dataVideos.filter(obj => obj.imageUrl !== 'N/A');
        
       return this.dataVideos;
     }));
   }
 
-  public searchVideo(name: string = 'new',year: string = `${this.date.getFullYear()}`, type: string = ''): Observable<any>{
+  public searchVideo(name: string, params?): Observable<any>{ //year?: string, type?: string
+    let year, type;
 
+    if(params){
+      year = params.yearOfRelease;
+      params.typeVideo =='all' ? type = '' : type = params.typeVideo;
+    }else{
+      year ='';
+      type='';
+    }
+    console.log(name, year, type);
     return this.http.get(`movies_api/?apikey=1a8fdd0&s=${name}&y=${year}&type=${type}`)
     .pipe(map((dataVideoObject: any) => {
-      console.log('123'); 
-      let dataVideo = dataVideoObject.Search;
-      this.dataVideos = this.transformItems(dataVideo);
-      this.dataVideos = this.dataVideos.filter(obj => obj.imageUrl !== 'N/A');
-      console.log(this.dataVideos); 
+      console.log(dataVideoObject); 
+      if(dataVideoObject.Response == 'True'){
+        let dataVideo = dataVideoObject.Search;
+        this.dataVideos = this.transformItems(dataVideo);
+      }else{
+        this.dataVideos = [];
+      }
+      
       return this.dataVideos;
     }));
   }
@@ -57,7 +68,7 @@ export class VideoApiService {
       product.id = obj.imdbID;
       product.type = 'video';
       product.title = obj.Title;
-      product.imageUrl = obj.Poster;
+      product.imageUrl = obj.Poster != 'N/A' ?  obj.Poster : '';
       product.description = obj.Plot ? obj.Plot : '';
       product.year = obj.Year.slice(0,4);
       product.typeVideo = obj.Type;
@@ -81,7 +92,7 @@ export class VideoApiService {
       product.id = obj.imdbID;
       product.type = 'video';
       product.title = obj.Title;
-      product.imageUrl = obj.Poster;
+      product.imageUrl = obj.Poster != 'N/A' ?  obj.Poster : '';
       product.description = obj.Plot ? obj.Plot : '';
       product.year = obj.Year.slice(0,4);
       product.typeVideo = obj.Type;

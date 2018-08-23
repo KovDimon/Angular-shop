@@ -69,7 +69,53 @@ li{
         }
     }
 
-    &-dropdown-link{
+    &-dropdown{
+
+        &-link{
+            display: flex;
+            align-items: center;
+            width: 140px;
+            position: relative;
+
+        }
+
+        &-caret{
+            display: block;
+            width: 32px;
+            height: 32px;
+            margin: 0;
+            padding: 0;
+            background: url('../../../../assets/img/icons.png') no-repeat -351px -1613px; //-140px -230px;
+            background-size: 488px 2111px;
+
+        }
+
+        &-menu{
+            padding: 0;
+            width: 300px;
+            position: absolute;
+            top: 59px;
+            right: 75px;
+            background-color: $lightRed;
+
+            &-hide{
+                display: none !important;
+            }
+
+            li{
+                padding: 10px;
+                
+            }
+
+            a{
+                color: white;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+
+        }
         //color: rgba(255,0,0,0.5) !;
     }
 }

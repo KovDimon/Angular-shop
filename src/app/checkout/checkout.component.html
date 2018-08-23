@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="row justify-content-center checkout">
+    <div>
+      <h1 class="checkout-title">Checkout</h1>
+    </div>
+  </div>
+  <div class=" checkout-content">
+    <div class="row align-items-center justify-content-center checkout-pagination">
+      <div *ngIf="!(numberPage == 1)" (click)="previos()" class="pagination-previos">
+      </div>
+      <div class="">
+        <h3 *ngIf="numberPage == 1" class="checkout-subtitle">Check orders details and enter promo code </h3>
+        <h3 *ngIf="numberPage == 2" class="checkout-subtitle">Choose address </h3>
+        <h3 *ngIf="numberPage == 3" class="checkout-subtitle">Choose payment method </h3>
+      </div>
+      <div *ngIf="!(numberPage == 3)" (click)="next()" class="pagination-next">
+      </div>
+    </div>
+    <div *ngIf="numberPage == 1" class="checkout-details">
+      <table class="col-md-8 checkout-table">
+        <thead>
+          <tr class="table-row">
+            <th>Name</th>
+            <th>Count</th>
+            <th>Price</th>
+            <th>Total price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row" *ngFor="let product of products">
+            <td>{{product.title}}</td>
+            <td>{{product.count}}</td>
+            <td>{{product.price | currency:'USD':'symbol-narrow'}}</td>
+            <td>{{product.price*product.count | currency:'USD':'symbol-narrow'}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3">Payment amount</th>
+            <th>{{total | currency:'USD':'symbol-narrow'}}</th>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="form-group promo-code">
+        <div class="input-group">
+          <input type="text" placeholder="Promocode..." class="form-control">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="button">Save</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="numberPage == 2" class="row checkout-address">
+      <div class="col-md-3">
+        <app-address-form (addAddress)="addAddress($event)"></app-address-form>
+      </div>
+      <div class="col-md-9 address-list">
+        <app-address-display *ngFor="let address of addresses" (saveAddress)="saveAddress($event)" (removeAddress)="removeAddress($event)" [address]="address"></app-address-display>
+      </div>
+    </div>
+    <div *ngIf="numberPage == 3" class="checkout-payment">
+      <div class="row justify-content-center checkout-payment-type">
+        <div *ngFor="let payment of paymentTypes" class="">
+          <a href="">
+            <h3>{{payment}}</h3>
+          </a>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <button class="col-md-1 btn btn-primary checkout-payment-button">Pay</button>
+      </div>
+
+    </div>
+  </div>
+</div>

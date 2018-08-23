@@ -17,7 +17,9 @@
         <form class="col-md-4 header-search" action="#" (ngSubmit)="search(form)" #form="ngForm">
             <div class="input-group search-group">
                 <span class="input-group-addon">
-                    <button [disabled]="form.invalid" class=" btn btn-default search-button" type="submit"><span class="button-img"></span></button>
+                    <button [disabled]="form.invalid" class=" btn btn-default search-button" type="submit">
+                        <span class="button-img"></span>
+                    </button>
                 </span>
                 <input ngModel name="search" class="form-control search-input" type="text" placeholder="Search" required>
             </div>
@@ -30,16 +32,24 @@
             </button>
             <!--</a>-->
         </div>
-        <div class="row col-md-2 justify-content-center dropdown header-dropdown">
-            <a class="dropdown-toggle header-dropdown-link" href="#" role="button">User
-                <span class="caret"></span>
+        <div class="row col-md-2 justify-content-center header-dropdown">
+            <a href="#" *ngIf="!authService.isAuthenticated()" (click)="login($event)">Log In</a>
+            <!--<a href="#" *ngIf="authService.isAuthenticated()" (click)="logout($event)">Log Out</a>-->
+            <a href="#" *ngIf="authService.isAuthenticated() && authService.isLoaded" class="header-dropdown-link" (click)="dropDown($event)">{{authService.getUserName()}}
+                <span class="header-dropdown-caret"></span>
             </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a href="">Data</a>
+            <ul *ngIf="isShow" class="row justify-content-center align-items-center header-dropdown-menu">
+                <li class="">
+                    <a (click)="navigate($event,'/profile')" href="">Profile</a>
                 </li>
-                <li>
-                    <a href="">Logout</a>
+                <li class="">
+                    <a (click)="navigate($event,'/address')" href="">Adress</a>
+                </li>
+                <li class="">
+                    <a (click)="navigate($event,'/orders')" href="">Orders</a>
+                </li>
+                <li class="">
+                    <a href="" (click)="logout($event)">Logout</a>
                 </li>
             </ul>
         </div>

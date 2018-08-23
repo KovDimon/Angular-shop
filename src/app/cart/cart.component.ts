@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { CartService } from '../shared/services/cart.service';
 import { Product } from '../shared/models/product';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,18 +16,31 @@ export class CartComponent implements OnInit {
 
   private total: number;
 
-  constructor(private cartService: CartService) { }
+  private profile: any;
+
+  constructor(
+    private cartService: CartService,
+    private route: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     this.listProducts = this.cartService.getCart();
     this.total = this.cartService.totalPrice();
+    if(localStorage.getItem('id_token')){
+      this.authService.getUser((err, profile) => this.profile = profile);
+    }
   }
 
-  deleteProduct(product:Product){
+  public deleteProduct(product:Product){
     console.log(product);
     this.cartService.removeProduct(product);
     this.listProducts = this.cartService.getCart();
     this.total = this.cartService.totalPrice();
+  }
+
+  public checkout(){
+    this.route.navigate(['/checkout']);
   }
 
 }

@@ -1,0 +1,44 @@
+.address-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.address-add-items .button {
+  margin: 10px 20px;
+  padding: 10px;
+  color: white;
+  background-color: rgba(0, 0, 255, 0.5);
+  border-radius: 5px;
+}
+
+.address-add-items .item-info {
+  padding: 10px 30px;
+}
+
+.address-add-items .item-field {
+  border-radius: 5px;
+  border: 1px solid red;
+}
+
+.address-add-items .item-field-valid {
+  border: 1px solid blue;
+}
+
+.address-add-items .item-field:focus {
+  outline: none;
+}
+
+.address-add-items .item-name {
+  font-weight: bold;
+  padding: 0 10px;
+  color: rgba(255, 0, 0, 0.5);
+}
+/*# sourceMappingURL=address-form.component.css.map */

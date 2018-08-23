@@ -16,6 +16,17 @@ a:hover {
   border-left: 2px solid rgba(255, 0, 0, 0.3);
 }
 
+.content-img {
+  width: 150px;
+  height: 200px;
+  background-color: lightgrey;
+}
+
+.content-img-text {
+  font-size: 24px;
+  color: grey;
+}
+
 .content-features {
   margin-top: 20px;
   display: -webkit-box;

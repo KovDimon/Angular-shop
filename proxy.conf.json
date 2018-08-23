@@ -34,5 +34,14 @@
       "^/country_api": ""
     },
     "changeOrigin": true
+  },
+  "/auth0_api/*": {
+    "target": "https://dimon-shop.auth0.com",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/auth0_api": ""
+    },
+    "changeOrigin": true
   }
 }

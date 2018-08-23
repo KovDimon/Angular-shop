@@ -1,0 +1,112 @@
+$lightRed: rgba(255,0,0, 0.3);
+$red: red;
+$darklyRed: rgba(255,0,0, 0.5);
+$lightBlue: rgba(0, 0, 255, 0.5);
+
+a{
+    text-decoration: none;
+}
+
+.checkout{
+
+    &-title{
+        padding: 20px;
+        color: $darklyRed;
+       
+    }
+
+    &-subtitle{
+        padding: 20px 60px;;
+        color: $darklyRed;
+
+    }
+
+    &-pagination{
+        border-bottom: 2px solid $lightRed;
+
+        .pagination{
+
+            &-previos{
+                display: block;
+                width: 50px;
+                height: 50px;
+                background: url('../../assets/img/icons.png') no-repeat -381px -2124px; //-140px -230px;
+                background-size: 1093px 2562px;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+            }
+
+            &-next{
+                display: block;
+                width: 50px;
+                height: 50px;
+                background: url('../../assets/img/icons.png') no-repeat -520px -2124px; //-140px -230px;
+                background-size: 1093px 2562px;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    &-content{
+
+    }
+
+    &-details{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .promo-code{
+            margin: 50px;
+        }
+
+    }
+
+    &-table{
+        color: $darklyRed;
+        margin-top: 20px;
+
+        thead{
+
+        }
+
+        tr{
+            color: blue;
+            border-bottom: 2px solid $lightBlue;
+        }
+
+        th{
+            color: $darklyRed;
+            padding: 10px;
+        }
+
+        td{
+            padding: 10px;
+        }
+    }
+
+    &-address{
+        margin-top: 20px;
+    }
+
+    &-payment{
+
+        &-type{
+            margin: 30px;
+        }
+
+        h3{
+            margin: 0 20px;
+        }
+
+        &-button{
+            margin: 50px 0;
+        }
+    }
+}

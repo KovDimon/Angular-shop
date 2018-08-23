@@ -1,0 +1,75 @@
+.address-title {
+  padding: 20px;
+  color: rgba(255, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(255, 0, 0, 0.3);
+}
+
+.address-subtitle {
+  padding: 20px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.address-content {
+  margin-top: 30px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.address-list {
+  margin-left: 50px;
+}
+
+.address-features {
+  margin: 10px;
+  padding: 5px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.address-features p {
+  color: blue;
+}
+
+.address-features span {
+  padding: 0 10px;
+  color: rgba(255, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.address-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.address-add-items .button {
+  margin: 10px 0;
+  color: white;
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+.address-add-items .item-info {
+  padding: 10px 30px;
+}
+
+.address-add-items .item-field {
+  border-radius: 5px;
+  border: 1px solid blue;
+}
+
+.address-add-items .item-field:focus {
+  outline: none;
+  border: 1px solid red;
+}
+
+.address-add-items .item-name {
+  font-weight: bold;
+  padding: 0 10px;
+}
+/*# sourceMappingURL=address.component.css.map */

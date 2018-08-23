@@ -68,7 +68,7 @@ export class CartService implements OnInit{
     return count;
   } 
 
-  modifyLocalStorage(){
+  public modifyLocalStorage(){
     localStorage.setItem('cart', JSON.stringify(this.productCart));
   }
 }
