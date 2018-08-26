@@ -68,6 +68,11 @@ export class CartService implements OnInit{
     return count;
   } 
 
+  public modifyPriceProducts(discountPercent: number){
+    this.productCart.forEach(obj => obj.price = obj.price-obj.price*discountPercent/100);
+    this.modifyLocalStorage();
+  }
+
   public modifyLocalStorage(){
     localStorage.setItem('cart', JSON.stringify(this.productCart));
   }

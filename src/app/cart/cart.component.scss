@@ -6,7 +6,7 @@ $white: white;
 
 a{
     text-decoration: none;
-    display: block;
+    //display: block;
     color: $red;
 
     &:hover{
@@ -24,12 +24,17 @@ a{
     &-logged-info{
         width: 300px;
         padding: 10px;
-        position: absolute;
+        position: fixed;
         top: 205px;
         left: 20px;
         color: $darklyRed;
         background-color: $lightRed;
         border-radius: 10px;
+    }
+
+    &-empty{
+        padding: 20px 0 10px 0;
+        color: $darklyRed;
     }
 
     &-product{
@@ -43,7 +48,8 @@ a{
 
         &-img{
             width: 70px;
-            
+            height: 105px;
+            object-fit: cover;
         }
 
         &-parametrs{

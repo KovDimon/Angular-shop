@@ -28,6 +28,11 @@ a:hover {
   font-weight: normal;
 }
 
+.product-content .content-parametrs-websites {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .product-content .content-parametrs .parametrs-title {
   color: rgba(255, 0, 0, 0.5);
   font-weight: bold;
@@ -68,7 +73,7 @@ a:hover {
 .product-content .content-data {
   width: 567px;
   height: 450px;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .product-content .content-button {

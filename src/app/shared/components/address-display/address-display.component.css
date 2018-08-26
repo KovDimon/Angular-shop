@@ -42,9 +42,11 @@
   height: 32px;
   background: url("../../../../assets/img/icons.png") no-repeat -228px -1894px;
   background-size: 488px 2111px;
+  opacity: 0.7;
 }
 
 .address-features-delete:hover {
+  opacity: 1;
   cursor: pointer;
 }
 
@@ -56,9 +58,11 @@
   height: 32px;
   background: url("../../../../assets/img/icons.png") no-repeat -351px -291px;
   background-size: 488px 2111px;
+  opacity: 0.7;
 }
 
 .address-features-edit:hover {
+  opacity: 1;
   cursor: pointer;
 }
 
@@ -70,9 +74,11 @@
   height: 32px;
   background: url("../../../../assets/img/icons.png") no-repeat -351px -918px;
   background-size: 488px 2111px;
+  opacity: 0.7;
 }
 
 .address-features-save:hover {
+  opacity: 1;
   cursor: pointer;
 }
 /*# sourceMappingURL=address-display.component.css.map */

@@ -7,7 +7,7 @@
     </div>
     <div class="row content">
       <div class="col-md-3 content-filter">
-        <app-filter [categories]="categories" (resetItems)="resetItems()" (filterItems)="changeItems($event)"></app-filter>
+        <app-filter [namePage]="'category'" [categories]="categories" (resetItems)="resetItems()" (filterItems)="changeItems($event)"></app-filter>
       </div>
       <div class="col-md-9 content-products">
         <div class="row align-items-end justify-content-between">

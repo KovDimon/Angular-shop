@@ -25,7 +25,6 @@ export class CategoryPageComponent implements OnInit {
 
   public categories: Categories = {};
 
-
   private maximumYear: string = '2018';
 
   private typeVideo: string = 'all';
@@ -46,9 +45,6 @@ export class CategoryPageComponent implements OnInit {
 
   ngOnInit() {
 
-    //this.categories.books = false;
-    //this.categories.video = false;
-    //this.categories.games = false;
     this.route.params.pipe(
       mergeMap((params:Params): ObservableInput<{}> => {
         console.log(this.categories);

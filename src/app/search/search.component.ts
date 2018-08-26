@@ -50,6 +50,8 @@ export class SearchComponent implements OnInit {
 
     this.route.queryParams.pipe(mergeMap(
       (params: Params): ObservableInput<any> => {
+        this.query = params.query;
+        console.log(parametrs);
         return combineLatest(
           this.videoApiService.searchVideo(params.query, parametrs),
           this.booksApiService.searchBooks(params.query, parametrs),
@@ -60,7 +62,7 @@ export class SearchComponent implements OnInit {
         console.log(data);
         if (this.categories.video) {
           if(data[0].length > 6){
-              this.products.length = 6;
+              data[0].length = 6;
           }
           this.products = data[0];
         }
@@ -78,26 +80,21 @@ export class SearchComponent implements OnInit {
           }
           this.products = this.products.concat(data[2]);
         }
-          console.log(this.isEmptySearch)
+          //console.log(this.isEmptySearch)
           if(!this.products.length){
             this.isEmptySearch = true;
           }
-          console.log(this.isEmptySearch)
+          //console.log(this.isEmptySearch)
         this.loaded = true;
     });
+  }
 
-    
+  public resetItems(){
+    this.categories.books = true;
+    this.categories.video = true;
+    this.categories.games = true;
 
-    /*let observables = [];
-    if (params.video) {
-      observables.push(this.videoApiService.searchVideo(params.query));
-    }
-    if (params.books) {
-      observables.push(this.booksApiService.searchBooks({name: params.query}));
-    }*/
-    /*if (params.games) {
-      observables.push(.search(params.query, movieFilter));
-    }*/
+    this.changeItems();
   }
 
 }

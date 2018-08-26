@@ -76,7 +76,7 @@ export class BooksApiService {
       product.year = obj.publicationDate ? obj.publicationDate.slice(0,4) : '';
       product.author = obj.author;
       product.authorBiography = obj.authorBiography;
-      product.price = Math.ceil(Math.random() * 10);
+      product.price = obj.isbn.slice(11,13)*5/10;
       product.estimatedReadingTime = obj.estimatedReadingTimeMinutes ? obj.estimatedReadingTimeMinutes : 0;      
 
       return product;
@@ -94,7 +94,7 @@ export class BooksApiService {
       product.year = obj.publicationDate ? obj.publicationDate.slice(0,4) : '';
       product.author = obj.author;
       product.authorBiography = obj.authorBiography;
-      product.price = Math.ceil(Math.random() * 10);
+      product.price = obj.isbn.slice(11,13)*5/10;
       product.estimatedReadingTime = obj.estimatedReadingTimeMinutes ? obj.estimatedReadingTimeMinutes : 0;      
 
       return product;

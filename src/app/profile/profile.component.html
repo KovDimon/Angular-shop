@@ -1,7 +1,10 @@
-<div *ngIf="authService.isLoaded">
+<div *ngIf="isLoaded">
   <div class="container profile">
     <div class="row justify-content-center profile-title">
       <h1 class="title">Profile</h1>
+    </div>
+    <div class="row justify-content-center profile-subtitle">
+      <h2 class="title">{{profile.firstName}} {{profile.lastName}}</h2>
     </div>
     <form class="row justify-content-center profile-content">
       <div class="col-md-8 profile-items">
@@ -43,7 +46,7 @@
           <img class="profile-img" src="{{profile.picture}}" alt="">
         </div>
         <div class="profile-button">
-          <button class="button" type="submit" (click)="save()">Save</button>
+          <button class="btn btn-primary button" type="submit" (click)="save()">Save</button>
         </div>
       </div>
     </form>

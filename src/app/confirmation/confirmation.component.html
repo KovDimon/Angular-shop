@@ -1,0 +1,42 @@
+<div *ngIf="isLoaded">
+  <div class="container confirmation">
+    <div class="row justify-content-center confirmation-title">
+      <h1 class="title">Thank you for your order!</h1>
+    </div>
+    <div class="row justify-content-center confirmation-subtitle">
+      <h3>Your order has been paid. It will be formed within the next 14 days.</h3>
+    </div>
+    <div class="confirmation-content">
+      <h3 class="row justify-content-center content-send">Send to: </h3>
+      <div class="row justify-content-center">
+        <div class="content-address">
+          <p>
+            <span>{{userLastName}} {{userFirstName}}</span>
+          </p>
+          <p>
+            <span>Zip / Postal Code:</span>
+            <span class="address-text">{{address.zip}}</span>
+          </p>
+          <p>
+            <span>Street Address:</span>
+            <span class="address-text">{{address.streetAddress}}</span>
+          </p>
+          <p>
+            <span>City:</span>
+            <span class="address-text">{{address.city}}</span>
+          </p>
+          <p>
+            <span>State / Region:</span>
+            <span class="address-text">{{address.state}}</span>
+          </p>
+          <p>
+            <span>Country:</span>
+            <span class="address-text">{{address.country}}</span>
+          </p>
+        </div>
+      </div>
+      <h3 class="row justify-content-center content-data"><span>Expected delivery date:</span>
+        <span class="data-text">{{getDate()}}</span></h3>
+    </div>
+  </div>
+</div>

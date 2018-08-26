@@ -15,6 +15,31 @@ a{
        
     }
 
+    &-address{
+
+        .address{
+
+            &-list{
+
+            }
+
+            &-button{
+                margin-top: 100px;
+                margin-left: 50px;
+            }
+
+            &-item{
+                margin: 0 5px;
+                cursor: pointer;
+
+                &-selected{
+                    border: 2px solid $lightBlue;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+
     &-subtitle{
         padding: 20px 60px;;
         color: $darklyRed;
@@ -64,6 +89,14 @@ a{
 
         .promo-code{
             margin: 50px;
+
+            &-success{
+                padding: 10px;
+                color: green;
+                border: 2px solid green;
+                background-color: lightgreen;
+                border-radius: 10px;
+            }
         }
 
     }
@@ -101,8 +134,26 @@ a{
             margin: 30px;
         }
 
+        .checkout-payment-selected{
+            padding: 10px;
+            color: white;
+            background-color: blue;
+            opacity: 0.8;
+
+            &:hover{
+                color: white;
+            }
+
+        }
+
         h3{
             margin: 0 20px;
+            color: $lightBlue;
+
+            &:hover{
+                cursor: pointer;
+                color: blue;
+            }
         }
 
         &-button{

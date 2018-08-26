@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
 
   private isShow: boolean = false;
 
+  private isLoaded: boolean = false;
+
   constructor(
     private cartService: CartService,
     private authService: AuthService, 
@@ -28,7 +30,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem('id_token')){
-      this.authService.getUser((err, profile) => this.profile = profile);
+      this.authService.getUser().subscribe(
+        profile => {
+          this.profile = profile;
+          this.isLoaded = true;
+        },
+        err => console.log("ERROR: data profile don't come in Header")
+      );
     }
   }
 

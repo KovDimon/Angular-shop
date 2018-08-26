@@ -3,7 +3,8 @@ import * as auth0 from 'auth0-js';
 import { Router } from '@angular/router';
 import { Profile } from '../models/profile.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
+//import { Observer } from 'rxjs/Observer';
 import { map } from 'rxjs/operators';
 import { Address } from '../models/address.model';
 
@@ -37,17 +38,7 @@ export class AuthService {
   constructor(
     private router: Router,
     private http: HttpClient
-  ) { 
-    try {
-      if (localStorage.getItem('id_token')) {
-
-        //this.getUser();
-        
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  ) {}
 
   public login(){
     this.auth0.authorize();
@@ -58,8 +49,8 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
+        this.getUser();
         this.router.navigate(['/main-page']);
-        this.getUser((err, profile) => console.log(profile));
       } else if (err) {
         this.router.navigate(['/main-page']);
         console.log(err);
@@ -89,7 +80,9 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
-  public getUser(cb) {
+  public getUser(): Observable<any> {
+
+    return Observable.create((observer: Observer<any>) =>{
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
       throw new Error('Access Token must exist to fetch profile');
@@ -104,7 +97,7 @@ export class AuthService {
 
         if(JSON.parse(localStorage.getItem(`${this.userName}`))){
           this.userProfile = JSON.parse(localStorage.getItem(`${this.userName}`));
-          
+          //observer.next(JSON.parse(localStorage.getItem(`${this.userName}`)));
         }else{
           let newProfile = new Profile();
         newProfile.firstName = profile.name;
@@ -120,13 +113,17 @@ export class AuthService {
         
         this.userProfile = newProfile;
         this.modifyLocalStorage();
+        observer.next(newProfile);
         }
+        observer.next(this.userProfile);
         this.isLoaded = true;
 
-        console.log(this.userProfile);
+        //console.log(this.userProfile);
       }
-      cb(err, this.userProfile);
+      //cb(err, this.userProfile);
     });
+    
+  });
   }
 
   /*public getUser(){
@@ -189,3 +186,9 @@ export class AuthService {
   }
   
 }
+
+/*.subscribe(
+          profile => {
+            this.userProfile = profile;
+            this.isLoaded = true;
+          });*/

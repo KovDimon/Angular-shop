@@ -1,14 +1,14 @@
 <div class="row justify-content-center filter-title">
   <h2>Filter</h2>
 </div>
-<form class="row justify-content-center filter-form">
+<div class="row justify-content-center filter-form">
   <div *ngIf="categories.books" class="row justify-content-center filter-element">
     <label>Author Name
       <input [(ngModel)]="authorName" name="author" type="text" placeholder="jhon">
     </label>
   </div>
   <div class="row align-items-center filter-element">
-    <label *ngIf="categories.video || categories.games" for="year">Date of Release</label>
+    <label *ngIf="(categories.video || categories.games) && !categories.books" for="year">Date of Release</label>
     <label *ngIf="categories.books" for="year">Maximum Date of Release</label>
     <input class="element-date" [(ngModel)]="maximumDate" name="years" id="year" placeholder="01.01.2018">
   </div>
@@ -55,7 +55,7 @@
       </label>
     </div>-->
   </div>
-  <div>
+  <div *ngIf="namePage == 'search'">
     <label>Video
       <input [(ngModel)]="categories.video" name="video" type="checkbox" checked>
     </label>
@@ -67,7 +67,7 @@
     </label>
   </div>
   <div class="row justify-content-between filter-element">
-    <button class="element-button element-button-apply" type="submit" (click)="changeParametrs()">Apply</button>
-    <button class="element-button element-button-reset" type="reset" (click)="reset()">Reset</button>
+    <button class="btn btn-primary element-button element-button-apply" (click)="changeParametrs()">Apply</button>
+    <button class="btn btn-danger element-button element-button-reset" (click)="reset()">Reset</button>
   </div>
-</form>
+</div>

@@ -31,6 +31,11 @@ a{
                 color: rgba(0, 0, 255, 0.8);
                 font-weight: normal;
 
+                &-websites{
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
                 .parametrs{
 
                     &-title{
@@ -75,7 +80,7 @@ a{
             &-data{
                 width: 567px;
                 height: 450px;
-                margin-right: 20px;
+                margin-right: 40px;
             }
 
             &-button{

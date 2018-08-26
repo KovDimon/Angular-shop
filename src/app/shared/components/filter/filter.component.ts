@@ -10,6 +10,8 @@ export class FilterComponent implements OnInit {
 
   @Input('') categories;
 
+  @Input('') namePage: string; 
+
   @Output('') filterItems = new EventEmitter<object>();
 
   @Output('') resetItems = new EventEmitter<any>();
@@ -35,8 +37,8 @@ export class FilterComponent implements OnInit {
  
   changeParametrs(){
 
-    this.maximumDate ? this.maximumDate : this.maximumDate = '01.01.2018';
-    this.minimumDate ? this.minimumDate : this.minimumDate = '01.01.2018';
+    //this.maximumDate ? this.maximumDate : this.maximumDate = '01.01.2018';
+    //this.minimumDate ? this.minimumDate : this.minimumDate = '01.01.2018';
     /*const params:Object;
 
     switch(this.nameCategory){
@@ -46,8 +48,8 @@ export class FilterComponent implements OnInit {
     this.filterItems.emit({
       yearOfRelease: this.maximumDate.slice(6,10),
       typeVideo: this.typeVideo,
-      maximumDate: `${this.maximumDate.slice(6,10)}-${this.maximumDate.slice(3,5)}-${this.maximumDate.slice(0,2)}`,
-      minimumDate: `${this.minimumDate.slice(6,10)}-${this.minimumDate.slice(3,5)}-${this.minimumDate.slice(0,2)}`,
+      maximumDate: this.maximumDate ? `${this.maximumDate.slice(6,10)}-${this.maximumDate.slice(3,5)}-${this.maximumDate.slice(0,2)}` : '',
+      minimumDate: this.minimumDate ? `${this.minimumDate.slice(6,10)}-${this.minimumDate.slice(3,5)}-${this.minimumDate.slice(0,2)}` : '',
       readingTime: this.readingTime,
       authorName: this.authorName,
       gamesRating: this.gamesRating
@@ -74,6 +76,20 @@ export class FilterComponent implements OnInit {
   }
 
   reset(){
+    this.maximumDate = '';
+
+    this.typeVideo = 'all';
+
+    this.minimumDate = '';
+
+    this.yearOfRelease = ''
+
+    this.authorName = '';
+
+    this.readingTime = '';
+
+    this.gamesRating ='';
+
     this.resetItems.emit();
   }
 

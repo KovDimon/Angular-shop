@@ -8,8 +8,9 @@ import { CategoryPageComponent } from "./category-page/category-page.component";
 import { SearchComponent } from "./search/search.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { AddressComponent } from "./address/address.component";
-import { OrdersComponent } from "./orders/orders.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
+import { ConfirmationComponent } from "./confirmation/confirmation.component";
+import { CallbackComponent } from "./callback/callback.component";
 
 const routes: Routes =[
     {path: '', redirectTo: 'main-page', pathMatch: 'full'},
@@ -20,8 +21,9 @@ const routes: Routes =[
     {path: 'search', component: SearchComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'address', component: AddressComponent},
-    {path: 'orders', component: OrdersComponent},
-    {path: 'checkout', component: CheckoutComponent}
+    {path: 'checkout', component: CheckoutComponent},
+    {path: 'confirmation', component: ConfirmationComponent},
+    {path: 'callback', component: CallbackComponent}
 ];
 
 @NgModule({

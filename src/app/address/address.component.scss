@@ -11,8 +11,13 @@ $darklyRed: rgba(255,0,0, 0.5);
     }
 
     &-subtitle{
-        padding: 20px;
-        color: $darklyRed;
+        //padding: 20px;
+        //color: $darklyRed;
+    }
+
+    &-button{
+        margin: 100px;
+        //color: $darklyRed;
     }
 
     &-content{

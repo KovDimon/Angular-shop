@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { mergeMap } from 'rxjs/operators';
+import { ObservableInput, combineLatest, Observable, of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 import { VideoApiService } from '../shared/services/video-api.service';
 import { BooksApiService } from '../shared/services/books-api.service';
 import { GamesApiService } from '../shared/services/games-api.service';
 import { Product } from '../shared/models/product';
-import { mergeMap } from 'rxjs/operators';
-import { ObservableInput } from 'rxjs';
 import { CartService } from '../shared/services/cart.service';
+import { AuthService } from '../shared/services/auth.service';
+import { Profile } from '../shared/models/profile.model';
+
 
 
 @Component({
@@ -29,12 +33,16 @@ export class ProductPageComponent implements OnInit {
 
   private text: boolean = false;
 
+  private profile: Profile;
+
   constructor(
     private route: ActivatedRoute, 
     private videoApiService: VideoApiService, 
     private booksApiService: BooksApiService, 
     private gamesApiService:GamesApiService, 
-    private cartService: CartService
+    private cartService: CartService,
+    private authService: AuthService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -49,26 +57,43 @@ export class ProductPageComponent implements OnInit {
 
     this.route.params.pipe(
       mergeMap((params:Params): ObservableInput<{}> => {
-        this.nameCategory = params['nameCategory'];
-        this.id = params['id'];
-        switch(this.nameCategory){
-          case 'video': return this.videoApiService.getVideo(this.id);
-  
-          case 'books': return this.booksApiService.getBook(this.id);
-  
-          case 'games': return this.gamesApiService.getGame(this.id);
-        }
+        if(localStorage.getItem('id_token')){
+          return combineLatest(
+            this.getProduct(params),
+            this.authService.getUser()
+          )
+          }else{
+            let profile = new Profile();
+            profile.currency = 'USD';
+            return combineLatest(
+              this.getProduct(params),
+              of(profile)
+            )
+            
+          }
       })
     ).subscribe(
-      (dataProduct: Product) => {
-        console.log('Data', dataProduct);
-        this.product = dataProduct;
+      (data) => {
+        console.log('Data', data);
+        this.product = data[0];
+        this.profile = data[1]
         this.loaded = true;
     });
+    //this.loaded = false;
+    /*if(localStorage.getItem('id_token')){
+      this.authService.getUser().subscribe(
+        profile => {
+          this.profile = profile;
+          this.loaded = true;
+        },
+        err => console.log("ERROR: data profile don't come in Product-page")
+      );
+    }*/
   }
 
   public buyProduct(){
 
+    this.toastr.success(`${this.product.title} added to cart`, 'Success!');
     this.bought = true;
     this.cartService.addProduct(this.product);
     setTimeout(() => this.bought = false, 1500);
@@ -77,5 +102,23 @@ export class ProductPageComponent implements OnInit {
   private showTextBook(event){
     event.preventDefault();
     this.text ? this.text =false : this.text = true;
+  }
+
+  private getProduct(params): Observable<any>{
+    this.nameCategory = params['nameCategory'];
+    this.id = params['id'];
+    switch(this.nameCategory){
+      case 'video': return this.videoApiService.getVideo(this.id);
+
+      case 'books': return this.booksApiService.getBook(this.id);
+
+      case 'games': return this.gamesApiService.getGame(this.id);
+    }
+  }
+
+  private checkUser(){
+    if(localStorage.getItem('id_token')){
+    this.authService.getUser()
+    }
   }
 }

@@ -1,6 +1,5 @@
 a {
   text-decoration: none;
-  display: block;
   color: red;
 }
 
@@ -16,12 +15,17 @@ a:hover {
 .cart-logged-info {
   width: 300px;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   top: 205px;
   left: 20px;
   color: rgba(255, 0, 0, 0.5);
   background-color: rgba(255, 0, 0, 0.3);
   border-radius: 10px;
+}
+
+.cart-empty {
+  padding: 20px 0 10px 0;
+  color: rgba(255, 0, 0, 0.5);
 }
 
 .cart-product {
@@ -36,6 +40,9 @@ a:hover {
 
 .cart-product-img {
   width: 70px;
+  height: 105px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .cart-product-parametrs {

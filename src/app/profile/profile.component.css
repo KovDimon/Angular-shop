@@ -4,6 +4,11 @@
   border-bottom: 2px solid rgba(255, 0, 0, 0.3);
 }
 
+.profile-subtitle {
+  padding: 20px;
+  color: blue;
+}
+
 .profile-content {
   margin-top: 10px;
   font-size: 24px;

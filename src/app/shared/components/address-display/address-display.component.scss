@@ -47,8 +47,10 @@ $darklyRed: rgba(255,0,0, 0.5);
             height: 32px;
             background: url('../../../../assets/img/icons.png') no-repeat -228px -1894px; //-140px -230px;
             background-size: 488px 2111px;
+            opacity: 0.7;
 
             &:hover{
+                opacity: 1;
                 cursor: pointer;
             }
 
@@ -62,8 +64,10 @@ $darklyRed: rgba(255,0,0, 0.5);
             height: 32px;
             background: url('../../../../assets/img/icons.png') no-repeat -351px -291px; //-140px -230px;
             background-size: 488px 2111px;
+            opacity: 0.7;
 
             &:hover{
+                opacity: 1;
                 cursor: pointer;
             }
         }
@@ -76,8 +80,10 @@ $darklyRed: rgba(255,0,0, 0.5);
             height: 32px;
             background: url('../../../../assets/img/icons.png') no-repeat -351px -918px; //-140px -230px;
             background-size: 488px 2111px;
+            opacity: 0.7;
 
             &:hover{
+                opacity: 1;
                 cursor: pointer;
             }
         }

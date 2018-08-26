@@ -56,19 +56,19 @@
           </span>{{product.language}}
         </div>
         <div *ngIf="product.trailer" class="content-parametrs">
-          <span class="parametrs-title">Trailer:
-          </span>{{product.trailer}}
+          <span class="parametrs-title"><a href="{{product.trailer}}">Trailer</a> 
+          </span>
         </div>
 
-        <div *ngIf="product.runtime && (product.runtime!=='N/A')" class="content-parametrs">
+        <div *ngIf="product.runtime" class="content-parametrs">
           <span class="parametrs-title">Runtime:
           </span>{{product.runtime}}
         </div>
-        <div *ngIf="product.websites" class="row align-items-center content-parametrs">
+        <div *ngIf="product.websites" class="row align-items-center content-parametrs content-parametrs-websites">
           <span class="parametrs-title">Websites:
           </span><a class="parametrs-link" *ngFor="let website of product.websites" href="{{website.url}}">{{website.name}}</a>
         </div>
-        <div *ngIf="product.writers && (product.writers!=='N/A')" class="content-parametrs">
+        <div *ngIf="product.writers" class="content-parametrs">
           <span class="parametrs-title">Writers:
           </span>{{product.writers}}
         </div>
@@ -84,7 +84,7 @@
         </div>-->
         <div class="row align-items-center justify-content-center content-buy">
           <div *ngIf="product.price !== 0" class="content-price">
-            {{product.price | currency:'USD': 'symbol-narrow'}}
+            {{product.price | converter:profile.currency | currency:profile.currency:'symbol-narrow'}}
           </div>
           <button [ngClass]="{'content-button-buy': bought}" class="row align-items-center content-button" (click)="buyProduct()">
             <span *ngIf="!bought" class="content-button-img"></span>

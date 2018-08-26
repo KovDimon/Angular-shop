@@ -64,16 +64,16 @@ export class GamesApiService {
   private transformItems(data: any[]){
     return data.map(obj => {
       let product = new Product;
-      product.id = obj.id;
+      product.id = String(obj.id);
       product.type = 'games';
       product.title = obj.name;
       product.imageUrl = obj.cover ? 
       `https://images.igdb.com/igdb/image/upload/t_screenshot_med/${obj.cover.cloudinary_id}.jpg` : '';
       product.description = obj.summary ? obj.summary : '';
       product.year = obj.release_dates ? obj.release_dates[0].human.slice(0,4) : '';
-      product.trailer = obj.videos ? obj.videos[0].video_id : '';
+      product.trailer = obj.videos ? `https://www.youtube.com/watch?v=${obj.videos[0].video_id}` : '';
       product.websites = obj.websites ? obj.websites : '';
-      product.price = obj.total_rating ? Math.floor(obj.total_rating/4) : Math.ceil(Math.random()*10+10);
+      product.price = obj.total_rating ? Math.floor(obj.total_rating/4) : Number(product.id.slice(0,3))* 5/10;
       product.rating = obj.total_rating ? obj.total_rating : 0;
 
       return product;
@@ -86,23 +86,23 @@ export class GamesApiService {
 
       console.log(obj);
       let product = new Product;
-      product.id = obj.id;
+      product.id = String(obj.id);
       product.type = 'games';
       product.title = obj.name;
       product.imageUrl = obj.cover ? 
       `https://images.igdb.com/igdb/image/upload/t_screenshot_med/${obj.cover.cloudinary_id}.jpg` : '';
       product.description = obj.summary ? obj.summary : '';
       product.year = obj.release_dates ? obj.release_dates[0].human.slice(0,4) : '';
-      product.trailer = obj.videos ? obj.videos[0].video_id : '';
+      product.trailer = obj.videos ? `https://www.youtube.com/watch?v=${obj.videos[0].video_id}` : '';
       product.websites = obj.websites ? obj.websites.map(obj => {
         //let text = obj.url.slice(8);
         let text = obj.url.match(/(\w+):\/\/([\w.]+)|(([\w.]+)-([\w.]+))\/(\S*)/);
         console.log(text);
         return { name: text[2], url: obj.url };
       }) : '';
-      product.price = obj.total_rating ? Math.floor(obj.total_rating/4) : Math.ceil(Math.random()*10+10);
+      product.price = obj.total_rating ? Math.floor(obj.total_rating/4) : Number(product.id.slice(0,3))* 5/10;
       product.rating = obj.total_rating ? obj.total_rating/10 : 0;
-
+      console.log(Number(product.id.slice(0,3))* 5/10);
       return product;
   }
 

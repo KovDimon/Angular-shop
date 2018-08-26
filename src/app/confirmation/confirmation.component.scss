@@ -1,0 +1,59 @@
+$lightRed: rgba(255,0,0, 0.3);
+$red: red;
+$darklyRed: rgba(255,0,0, 0.5);
+
+.confirmation{
+
+    &-title{
+        padding: 20px;
+        color: $darklyRed;
+        //border-bottom: 2px solid $lightRed;
+    }
+
+    &-subtitle{
+        padding: 20px;
+        color: $darklyRed;
+    }
+
+    .content{
+
+        &-send{
+            padding: 20px;
+            color: $darklyRed;
+        }
+
+        &-address{
+
+            span{
+                padding: 0 10px;
+                color: $darklyRed;
+                font-weight: bold;
+            }
+
+            .address{
+                
+                &-text{
+                    padding: 0;
+                    color: blue;
+                    font-weight: normal;
+                }
+            }
+        }
+
+        &-data{
+            padding: 20px;
+            color: $darklyRed;
+
+            span{
+                padding: 0 10px;
+                color: $darklyRed;
+            }
+
+            .data-text{
+                padding: 0;
+                    color: blue;
+                    font-weight: normal;
+            }
+        }
+    }
+}

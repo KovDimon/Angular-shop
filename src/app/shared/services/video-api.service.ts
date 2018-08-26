@@ -37,7 +37,7 @@ export class VideoApiService {
     }));
   }
 
-  public searchVideo(name: string, params?): Observable<any>{ //year?: string, type?: string
+  public searchVideo(name: string, params?): Observable<any>{
     let year, type;
 
     if(params){
@@ -69,17 +69,17 @@ export class VideoApiService {
       product.type = 'video';
       product.title = obj.Title;
       product.imageUrl = obj.Poster != 'N/A' ?  obj.Poster : '';
-      product.description = obj.Plot ? obj.Plot : '';
+      product.description = obj.Plot != 'N/A' ? obj.Plot : '';
       product.year = obj.Year.slice(0,4);
       product.typeVideo = obj.Type;
-      product.actors = obj.Actors ? obj.Actors : '';
-      product.price = obj.imdbRating ? Math.floor(obj.imdbRating*5) : 0;
-      product.rating = obj.imdbRating ? obj.imdbRating : 0;
-      product.runtime = obj.Runtime ? obj.Runtime : '0';
-      product.language = obj.Language ? obj.Language : '';
-      product.country = obj.Country ? obj.Country : '';
-      product.genre = obj.Genre ? obj.Genre : '';
-      product.writers = obj.Writer ? obj.Writer : '';
+      product.actors = obj.Actors != 'N/A' ? obj.Actors : '';
+      product.price = obj.imdbRating != 'N/A' ? Math.floor(obj.imdbRating*5) : obj.imdbID.slice(7,9)*5/10;
+      product.rating = obj.imdbRating != 'N/A' ? obj.imdbRating : 0;
+      product.runtime = obj.Runtime != 'N/A' ? obj.Runtime : '0';
+      product.language = obj.Language != 'N/A' ? obj.Language : '';
+      product.country = obj.Country != 'N/A' ? obj.Country : '';
+      product.genre = obj.Genre  != 'N/A' ? obj.Genre : '';
+      product.writers = obj.Writer != 'N/A' ? obj.Writer : '';
 
       return product;
     });
@@ -93,17 +93,17 @@ export class VideoApiService {
       product.type = 'video';
       product.title = obj.Title;
       product.imageUrl = obj.Poster != 'N/A' ?  obj.Poster : '';
-      product.description = obj.Plot ? obj.Plot : '';
+      product.description = obj.Plot != 'N/A' ? obj.Plot : '';
       product.year = obj.Year.slice(0,4);
       product.typeVideo = obj.Type;
-      product.actors = obj.Actors ? obj.Actors : '';
-      product.price = obj.imdbRating ? Math.floor(obj.imdbRating*5) : 0;
-      product.rating = obj.imdbRating ? obj.imdbRating : 0;
-      product.runtime = obj.Runtime ? obj.Runtime : '0';
-      product.language = obj.Language ? obj.Language : '';
-      product.country = obj.Country ? obj.Country : '';
-      product.genre = obj.Genre ? obj.Genre : '';
-      product.writers = obj.Writer ? obj.Writer : '';
+      product.actors = obj.Actors != 'N/A' ? obj.Actors : '';
+      product.price = obj.imdbRating != 'N/A' ? Math.floor(obj.imdbRating*5) : obj.imdbID.slice(7,9)*5/10;
+      product.rating = obj.imdbRating != 'N/A' ? obj.imdbRating : 0;
+      product.runtime = obj.Runtime != 'N/A' ? obj.Runtime : '0';
+      product.language = obj.Language != 'N/A' ? obj.Language : '';
+      product.country = obj.Country != 'N/A' ? obj.Country : '';
+      product.genre = obj.Genre != 'N/A' ? obj.Genre : '';
+      product.writers = obj.Writer != 'N/A' ? obj.Writer : '';
 
       return product;
   }

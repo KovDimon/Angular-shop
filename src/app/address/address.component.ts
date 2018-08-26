@@ -14,13 +14,23 @@ export class AddressComponent implements OnInit {
 
   private profile: Profile;
 
+  private isShowed: boolean = false;
+
+  private isLoaded: boolean = false;
+
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
     if(localStorage.getItem('id_token')){
-      this.authService.getUser((err, profile) => this.addresses = profile.address);
+      this.authService.getUser().subscribe(
+        profile =>{
+          this.addresses = profile.address;
+          this.isLoaded =true;
+        },
+        err => console.log("ERROR: data profile don't come in Address")
+      );
     }
     
     //this.addresses = this.profile; 
@@ -28,7 +38,7 @@ export class AddressComponent implements OnInit {
   }
 
   public addAddress(event){
-
+    this.isShowed = false;
     this.authService.addAddress(event);
   }
 
@@ -38,5 +48,13 @@ export class AddressComponent implements OnInit {
 
   public saveAddress(event){
     this.authService.editAddress(event);
+  }
+
+  public cancelAddress(){
+    this.isShowed = false;
+  }
+
+  public add(){
+    this.isShowed = true;
   }
 }

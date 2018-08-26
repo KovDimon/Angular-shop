@@ -1,38 +1,43 @@
-<div class="row justify-content-center product">
-  <h1 class="cart-title">Cart</h1>
-</div>
-<div class="container cart">
-  <div *ngFor="let product of listProducts" class="row justify-content-center cart-product">
-    <div class="row align-items-center justify-content-between cart-product-wrap">
-      <div class="cart-product-parametrs">
-        <img class="cart-product-img" src="{{product.imageUrl}}" alt="">
+<div *ngIf="isLoaded">
+    <div class="row justify-content-center product">
+        <h1 class="cart-title">Cart</h1>
       </div>
-      <div class="cart-product-parametrs cart-product-name">
-        <a [routerLink]="['/product-page', product.type, product.id]" href="#">
-          {{product.title}}
-        </a>
+      <div class="container cart">
+        <div *ngIf="!total" class="row justify-content-center">
+          <h2 class="cart-empty">Your cart is empty</h2>
+        </div>
+        <div *ngFor="let product of listProducts" class="row justify-content-center cart-product">
+          <div class="row align-items-center justify-content-between cart-product-wrap">
+            <div class="cart-product-parametrs">
+              <img class="cart-product-img" src="{{product.imageUrl}}" alt="">
+            </div>
+            <div class="cart-product-parametrs cart-product-name">
+              <a [routerLink]="['/product-page', product.type, product.id]" href="#">
+                {{product.title}}
+              </a>
+            </div>
+            <div class="cart-product-parametrs cart-product-price">
+              {{product.price | converter:profile.currency | currency:profile.currency:'symbol-narrow'}}
+            </div>
+            <div class="cart-product-parametrs cart-product-count">
+              x {{product.count}}
+            </div>
+            <div class="row align-items-center justify-content-center cart-product-parametrs cart-product-delete">
+              <span (click)="deleteProduct(product)" class="delete-img"></span> 
+            </div>
+          </div>
+        </div>
+        <div *ngIf="total" class="cart-total">
+          <div class="cart-total-title">
+              <h2>Total: <span>{{total | converter:profile.currency | currency:profile.currency:'symbol-narrow'}}</span></h2>
+          </div>
+          <button (click)="checkout()" class="cart-total-checkout" [disabled]="!authService.isAuthenticated()">
+            Checkout
+          </button>
+        </div>
+        <div *ngIf="!authService.isAuthenticated() && total" class="cart-logged">
+          <h2 class="cart-logged-info">For payment you must be logged in!</h2>
+        </div>
+      
       </div>
-      <div class="cart-product-parametrs cart-product-price">
-        {{product.price | currency:'USD':'symbol-narrow'}}
-      </div>
-      <div class="cart-product-parametrs cart-product-count">
-        x {{product.count}}
-      </div>
-      <div class="row align-items-center justify-content-center cart-product-parametrs cart-product-delete">
-        <span (click)="deleteProduct(product)" class="delete-img"></span> 
-      </div>
-    </div>
-  </div>
-  <div class="cart-total">
-    <div class="cart-total-title">
-        <h2>Total: <span>{{total | currency:'USD':'symbol-narrow'}}</span></h2>
-    </div>
-    <button (click)="checkout()" class="cart-total-checkout" [disabled]="!authService.isAuthenticated()">
-      Checkout
-    </button>
-  </div>
-  <div *ngIf="!authService.isAuthenticated()" class="cart-logged">
-    <h2 class="cart-logged-info">For payment you must be logged in!</h2>
-  </div>
-
 </div>

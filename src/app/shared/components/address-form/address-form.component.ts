@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { Address } from '../../models/address.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-address-form',
@@ -12,10 +13,12 @@ export class AddressFormComponent implements OnInit {
 
   form: FormGroup;
 
-  @Input() 
-  @Output('') addAddress = new EventEmitter<any>();
+  @Output() cancelAddress = new EventEmitter<any>();
+  @Output() addAddress = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(
+    private toastr: ToastrService
+  ) { }
 
   private country: string = '';
 
@@ -38,6 +41,7 @@ export class AddressFormComponent implements OnInit {
   }
 
   public add(form){
+    this.toastr.success('Address update to profile!', 'Success!');
     this.addAddress.emit({
       id: this.makeId(),
       country: this.country,
@@ -46,7 +50,6 @@ export class AddressFormComponent implements OnInit {
       zip: this.zip,
       state: this.state
     });
-    console.log(form);
     this.city = '';
     this.country = '';
     this.streetAddress = '';
@@ -56,6 +59,10 @@ export class AddressFormComponent implements OnInit {
 
   private makeId(): string{
     return Math.random().toString(36).substr(2,16);
+  }
+
+  public cancel(){
+    this.cancelAddress.emit();
   }
 
 }

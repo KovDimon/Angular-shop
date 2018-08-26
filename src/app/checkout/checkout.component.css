@@ -7,6 +7,21 @@ a {
   color: rgba(255, 0, 0, 0.5);
 }
 
+.checkout-address .address-button {
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.checkout-address .address-item {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.checkout-address .address-item-selected {
+  border: 2px solid rgba(0, 0, 255, 0.5);
+  border-radius: 10px;
+}
+
 .checkout-subtitle {
   padding: 20px 60px;
   color: rgba(255, 0, 0, 0.5);
@@ -57,6 +72,14 @@ a {
   margin: 50px;
 }
 
+.checkout-details .promo-code-success {
+  padding: 10px;
+  color: green;
+  border: 2px solid green;
+  background-color: lightgreen;
+  border-radius: 10px;
+}
+
 .checkout-table {
   color: rgba(255, 0, 0, 0.5);
   margin-top: 20px;
@@ -84,8 +107,25 @@ a {
   margin: 30px;
 }
 
+.checkout-payment .checkout-payment-selected {
+  padding: 10px;
+  color: white;
+  background-color: blue;
+  opacity: 0.8;
+}
+
+.checkout-payment .checkout-payment-selected:hover {
+  color: white;
+}
+
 .checkout-payment h3 {
   margin: 0 20px;
+  color: rgba(0, 0, 255, 0.5);
+}
+
+.checkout-payment h3:hover {
+  cursor: pointer;
+  color: blue;
 }
 
 .checkout-payment-button {

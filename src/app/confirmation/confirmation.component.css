@@ -1,0 +1,43 @@
+.confirmation-title {
+  padding: 20px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.confirmation-subtitle {
+  padding: 20px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.confirmation .content-send {
+  padding: 20px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.confirmation .content-address span {
+  padding: 0 10px;
+  color: rgba(255, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.confirmation .content-address .address-text {
+  padding: 0;
+  color: blue;
+  font-weight: normal;
+}
+
+.confirmation .content-data {
+  padding: 20px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.confirmation .content-data span {
+  padding: 0 10px;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.confirmation .content-data .data-text {
+  padding: 0;
+  color: blue;
+  font-weight: normal;
+}
+/*# sourceMappingURL=confirmation.component.css.map */
