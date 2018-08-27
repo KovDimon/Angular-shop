@@ -72,16 +72,9 @@
           <span class="parametrs-title">Writers:
           </span>{{product.writers}}
         </div>
-        <!--<div class="content-parametrs">
-          <span class="parametrs-title">Rating IMDB:
-          </span>{{product.imdbRating}}
-        </div>-->
         <div *ngIf="product.description" class="content-parametrs">
           <span class="parametrs-title">Description: </span>{{product.description}}
         </div>
-        <!--<div *ngIf="nameCategory" class="content-parametrs">
-          <span class="parametrs-title">Description: </span>{{product.textWithHTML}}
-        </div>-->
         <div class="row align-items-center justify-content-center content-buy">
           <div *ngIf="product.price !== 0" class="content-price">
             {{product.price | converter:profile.currency | currency:profile.currency:'symbol-narrow'}}

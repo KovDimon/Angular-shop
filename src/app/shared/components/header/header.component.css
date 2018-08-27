@@ -62,6 +62,10 @@ li {
   display: block;
 }
 
+.header-dropdown a:hover {
+  color: blue;
+}
+
 .header-dropdown-link {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -71,16 +75,6 @@ li {
           align-items: center;
   width: 140px;
   position: relative;
-}
-
-.header-dropdown-caret {
-  display: block;
-  width: 32px;
-  height: 32px;
-  margin: 0;
-  padding: 0;
-  background: url("../../../../assets/img/icons.png") no-repeat -351px -1613px;
-  background-size: 488px 2111px;
 }
 
 .header-dropdown-menu {

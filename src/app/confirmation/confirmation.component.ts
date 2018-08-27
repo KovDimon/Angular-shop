@@ -46,11 +46,15 @@ export class ConfirmationComponent implements OnInit {
           }
       )).subscribe(
         dataProfile => {
+          if(!dataProfile){
+            return;
+          }
           console.log(dataProfile);
           this.address = dataProfile.address.find(obj => obj.id === this.idAddress);
           this.userFirstName = dataProfile.firstName;
           this.userLastName = dataProfile.lastName;
           this.toastr.success('Your order has been successfully processed', 'Success!');
+          this.cartService.clearCart();
           this.isLoaded = true;
         },
         err => console.log("ERROR: data profile don't come in Confirmation")

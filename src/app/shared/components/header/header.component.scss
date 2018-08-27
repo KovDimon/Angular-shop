@@ -5,8 +5,6 @@ $darklyRed: rgba(255,0,0, 0.5);
 a{
     text-decoration: none;
     color: red;
-    //opacity: 0.7;
-   
 }
 
 input{
@@ -71,22 +69,17 @@ li{
 
     &-dropdown{
 
+        a{
+            &:hover{
+                color: blue;
+            }
+        }
+
         &-link{
             display: flex;
             align-items: center;
             width: 140px;
             position: relative;
-
-        }
-
-        &-caret{
-            display: block;
-            width: 32px;
-            height: 32px;
-            margin: 0;
-            padding: 0;
-            background: url('../../../../assets/img/icons.png') no-repeat -351px -1613px; //-140px -230px;
-            background-size: 488px 2111px;
 
         }
 

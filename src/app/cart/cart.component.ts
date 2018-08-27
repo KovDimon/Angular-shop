@@ -32,7 +32,12 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.listProducts = this.cartService.getCart();
     this.total = this.cartService.totalPrice();
-    if(localStorage.getItem('id_token')){
+    /*this.authService.getProfile().subscribe(
+      profile => {this.profile = profile; this.isLoaded = true;}
+    );*/
+    //this.authService.getProfile();
+    console.log(this.profile);
+    /*if(localStorage.getItem('id_token')){
       this.authService.getUser().subscribe(
         profile =>{ 
           this.profile = profile;
@@ -44,7 +49,15 @@ export class CartComponent implements OnInit {
       this.profile = new Profile();
       this.profile.currency = 'USD';
       this.isLoaded = true;
-    }
+    }*/
+
+    this.authService.getUser().subscribe(
+      profile =>{ 
+        this.profile = profile ? profile : new Profile().currency = 'USD';
+        this.isLoaded = true;
+      },
+      err => console.log("ERROR: data profile don't come in Cart")
+    );
   }
 
   public deleteProduct(product:Product){

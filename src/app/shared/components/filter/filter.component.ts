@@ -37,13 +37,6 @@ export class FilterComponent implements OnInit {
  
   changeParametrs(){
 
-    //this.maximumDate ? this.maximumDate : this.maximumDate = '01.01.2018';
-    //this.minimumDate ? this.minimumDate : this.minimumDate = '01.01.2018';
-    /*const params:Object;
-
-    switch(this.nameCategory){
-      case 'video': params.yearOfRelease = this.maximumDate.slice(0,-4); params.typeVideo = this.typeVideo; break;
-    }*/
     console.log(this.maximumDate.slice(6,10));
     this.filterItems.emit({
       yearOfRelease: this.maximumDate.slice(6,10),
@@ -54,25 +47,6 @@ export class FilterComponent implements OnInit {
       authorName: this.authorName,
       gamesRating: this.gamesRating
     });
-
-    /*switch(this.nameCategory){
-      case 'video': this.videoApiService.searchVideo(this.maximumYear, this.typeVideo).subscribe(
-        dataVideo => this.products = dataVideo,
-        error => console.log("ERROR: data video don't got")
-      ); break;
-      
-      case 'books': this.booksApiService.searchBooks({
-        maximumYear: this.maximumYear,
-        minimumYear: this.minimumYear,
-        readingTime: this.readingTime,
-        authorName: this.authorName
-      }).subscribe(
-        dataBooks => this.products = dataBooks,
-        error => console.log("ERROR: data video don't got")
-      ); break;
-
-      default: 
-    }*/
   }
 
   reset(){

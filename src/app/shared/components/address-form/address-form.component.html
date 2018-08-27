@@ -1,49 +1,49 @@
-<!--<form [formGroup]="form" class="row justify-content-end address-add-items">
-    <div class="row align-items-center justify-content-between item-info">
-      <span class="item-name">Country:</span>
-      <input formControlName="country" [ngClass]="{'item-field-valid': form.get('country').valid}" [(ngModel)]="country" class="item-field" type="text">
-    </div>
-    <div class="row align-items-center justify-content-between item-info">
-      <span class="item-name">State / Region:</span>
-      <input formControlName="state" [ngClass]="{'item-field-valid': form.get('state').valid}" [(ngModel)]="state" class="item-field" type="text">
-    </div>
-    <div class="row align-items-center justify-content-between item-info">
-      <span class="item-name">City:</span>
-      <input formControlName="city" [ngClass]="{'item-field-valid': form.get('city').valid}" [(ngModel)]="city" class="item-field" type="text">
-    </div>
-    <div class="row align-items-center justify-content-between item-info">
-      <span class="item-name">Street Address:</span>
-      <input formControlName="streetAddress" [ngClass]="{'item-field-valid': form.get('streetAddress').valid}" [(ngModel)]="streetAddress" class="item-field" type="text">
-    </div>
-    <div class="row align-items-center justify-content-between item-info">
-      <span class="item-name">Zip/Postal Code:</span>
-      <input formControlName="zip" [ngClass]="{'item-field-valid': form.get('zip').valid}" [(ngModel)]="zip" class="item-field" type="text">
-    </div>
-    <button class="button" (click)="add(form)" [disabled]="form.invalid">Add Adress</button>
-  </form>-->
-
-
 <mat-card class="address-add-items">
   <mat-card-header>
-      <mat-card-title><h1 class="address-add-title">Billing Address</h1></mat-card-title>
-      <div class="address-cancel" (click)="cancel()"></div>
+    <mat-card-title>
+      <h1 class="address-add-title">Billing Address</h1>
+    </mat-card-title>
+    <div class="address-cancel" (click)="cancel()"></div>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form" action="">
       <mat-form-field class="item-info">
-        <input matInput formControlName="country" [(ngModel)]="country" class="item-field" type="text" placeholder="Country:">
+        <input [errorStateMatcher]="matcher" matInput formControlName="country" [(ngModel)]="country" class="item-field" type="text"
+          placeholder="Country:">
+        <mat-error *ngIf="form.get('country').invalid">
+          Country is
+          <strong>required</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="item-info">
-        <input matInput formControlName="state" [(ngModel)]="state" class="item-field" type="text" placeholder="Zip/Postal Code:">
+        <input [errorStateMatcher]="matcher" matInput formControlName="state" [(ngModel)]="state" class="item-field" type="text"
+          placeholder="State / Region:">
+        <mat-error *ngIf="form.get('state').invalid">
+          State / Region is
+          <strong>required</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="item-info">
-        <input matInput formControlName="city" [(ngModel)]="city" class="item-field" type="text" placeholder="City:">
+        <input [errorStateMatcher]="matcher" matInput formControlName="city" [(ngModel)]="city" class="item-field" type="text" placeholder="City:">
+        <mat-error *ngIf="form.get('city').invalid">
+          City is
+          <strong>required</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="item-info">
-        <input matInput formControlName="streetAddress" [(ngModel)]="streetAddress" class="item-field" type="text" placeholder="Street Address:">
+        <input [errorStateMatcher]="matcher" matInput formControlName="streetAddress" [(ngModel)]="streetAddress" class="item-field"
+          type="text" placeholder="Street Address:">
+        <mat-error *ngIf="form.get('streetAddress').invalid">
+          Street address is
+          <strong>required</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="item-info">
-        <input matInput formControlName="zip" [(ngModel)]="zip" class="item-field" type="text" placeholder="State / Region:">
+        <input [errorStateMatcher]="matcher" matInput formControlName="zip" [(ngModel)]="zip" class="item-field" type="text" placeholder="Zip / Postal Code:">
+        <mat-error *ngIf="form.get('zip').invalid">
+          Zip / Poctal Code is
+          <strong>required</strong>
+        </mat-error>
       </mat-form-field>
     </form>
   </mat-card-content>

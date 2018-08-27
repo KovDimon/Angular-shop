@@ -6,7 +6,7 @@ $lightBlue: rgba(0,0,255, 0.5);
 input{
     margin: 0 10px;
     border-radius: 5px;
-    color: $red;
+    color: blue;
     border-color: $lightBlue;
     
     &:focus{
@@ -15,12 +15,15 @@ input{
 }
 
 select{
-    color: $red;
+    color: blue;
     border-color: $lightBlue;
+    border-radius: 5px;
 }
 
 label{
     color: $red;
+    padding-left: 20px;
+    padding-right: 5px;
 }
         .filter{
 
@@ -34,12 +37,21 @@ label{
             }
 
             &-element{
-                padding: 10px 0;
+                width: 100%;
+                padding: 10px 10px;
+                //display: flex;
+                //justify-content: space-between;
+                //align-items: center;
 
                 .element{
 
                     &-date{
                         width: 90px;
+                    }
+
+                    &-invalid{
+                        border-color: $red;
+                        color: $red;
                     }
 
                     &-time{

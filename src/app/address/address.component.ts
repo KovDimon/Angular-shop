@@ -23,15 +23,16 @@ export class AddressComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(localStorage.getItem('id_token')){
       this.authService.getUser().subscribe(
         profile =>{
+          if(!profile){
+            return;
+          }
           this.addresses = profile.address;
-          this.isLoaded =true;
+          this.isLoaded = true;
         },
         err => console.log("ERROR: data profile don't come in Address")
       );
-    }
     
     //this.addresses = this.profile; 
     console.log(this.addresses);

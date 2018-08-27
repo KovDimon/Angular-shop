@@ -1,8 +1,16 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { Address } from '../../models/address.model';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorStateMatcher } from '@angular/material';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-address-form',
@@ -30,6 +38,8 @@ export class AddressFormComponent implements OnInit {
 
   private city: string = '';
 
+  private matcher;
+
   ngOnInit() {
     this.form = new FormGroup({
       'country': new FormControl(null, [Validators.required]),
@@ -38,6 +48,8 @@ export class AddressFormComponent implements OnInit {
       'streetAddress': new FormControl(null, [Validators.required]),
       'state': new FormControl(null, [Validators.required])
     });
+
+    this.matcher = new MyErrorStateMatcher();
   }
 
   public add(form){

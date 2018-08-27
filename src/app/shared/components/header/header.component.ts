@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(localStorage.getItem('id_token')){
+    /*if(localStorage.getItem('id_token')){
       this.authService.getUser().subscribe(
         profile => {
           this.profile = profile;
@@ -37,7 +37,9 @@ export class HeaderComponent implements OnInit {
         },
         err => console.log("ERROR: data profile don't come in Header")
       );
-    }
+    }*/
+    console.log(this.authService.isAuthenticated());
+    console.log(this.authService.isLoaded);
   }
 
   public count(): number{

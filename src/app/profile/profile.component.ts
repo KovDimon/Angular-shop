@@ -21,13 +21,15 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
-    if(localStorage.getItem('id_token')){
-      //this.authService.getUser((err, profile) => this.profile = profile);
-      this.authService.getUser().subscribe(data => { console.log(data); this.profile = data; this.isLoaded = true;});
-    }
+      this.authService.getUser().subscribe(
+        profile => { 
+          if(!profile){
+            return;
+          }
+          this.profile = profile; 
+          this.isLoaded = true;
+        });
       console.log(this.profile);
-
   }
 
   public save(){

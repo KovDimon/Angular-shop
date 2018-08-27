@@ -1,73 +1,53 @@
 <div class="row justify-content-center filter-title">
-  <h2>Filter</h2>
+  <h2>Filters</h2>
 </div>
-<div class="row justify-content-center filter-form">
-  <div *ngIf="categories.books" class="row justify-content-center filter-element">
-    <label>Author Name
-      <input [(ngModel)]="authorName" name="author" type="text" placeholder="jhon">
-    </label>
+<form class="row justify-content-center filter-form" #form="ngForm">
+  <div *ngIf="categories.books" class="row align-items-center justify-content-between filter-element">
+    <label>Author Name</label>
+    <input pattern="^[a-zA-Z]+$" #author="ngModel" [ngClass]="{'element-invalid': author.invalid}" 
+    [(ngModel)]="authorName" name="author" type="text" placeholder="jhon">
   </div>
-  <div class="row align-items-center filter-element">
-    <label *ngIf="(categories.video || categories.games) && !categories.books" for="year">Date of Release</label>
-    <label *ngIf="categories.books" for="year">Maximum Date of Release</label>
-    <input class="element-date" [(ngModel)]="maximumDate" name="years" id="year" placeholder="01.01.2018">
+  <div class="row align-items-center justify-content-between filter-element">
+    <label *ngIf="(categories.video || categories.games) && !categories.books">Date of Release</label>
+    <label *ngIf="categories.books">Maximum Date of Release</label>
+    <input pattern="[0-9]{2}\.[0-9]{2}\.[0-9]{4}" *ngIf="categories.books || categories.games || categories.video" class="element-date" [(ngModel)]="maximumDate" name="maxDate"
+       placeholder="01.01.2018" #maxDate="ngModel" [ngClass]="{'element-invalid': maxDate.invalid}">
   </div>
-  <div *ngIf="categories.books" class="row justify-content-center filter-element">
-    <label> Minimum Date of Release
-      <input class="element-date" [(ngModel)]="minimumDate" name="years" placeholder="01.01.2017">
-    </label>
+  <div *ngIf="categories.books" class="row align-items-center justify-content-between filter-element">
+    <label> Minimum Date of Release</label>
+    <input pattern="[0-9]{2}\.[0-9]{2}\.[0-9]{4}" class="element-date" [(ngModel)]="minimumDate" name="minDate" placeholder="01.01.2017"
+    [ngClass]="{'element-invalid': minDate.invalid}" #minDate="ngModel">
   </div>
 
-  <div *ngIf="categories.books" class="row justify-content-center filter-element">
-    <label>Maximum Reading Time
-      <input class="element-time" [(ngModel)]="ReadingTime" name="estimatedReadingTime" placeholder="10">
-    </label>
+  <div *ngIf="categories.books" class="row align-items-center justify-content-between filter-element">
+    <label>Maximum Reading Time, min</label>
+    <input pattern="[0-9]{0,3}" class="element-time" #readingTime="ngModel" [(ngModel)]="ReadingTime" 
+    [ngClass]="{'element-invalid': readingTime.invalid}" name="estimatedReadingTime" placeholder="100">
   </div>
-  <div *ngIf="categories.games" class="row justify-content-center filter-element">
-    <label>Minimum Rating
-      <input class="element-time" [(ngModel)]="gamesRating" name="rating" placeholder="8">
-    </label>
+  <div *ngIf="categories.games" class="row align-items-center justify-content-between filter-element">
+    <label>Minimum Rating</label>
+    <input pattern="[0-9]{1}\.[0-9]{1}" class="element-time" #rating="ngModel" [(ngModel)]="gamesRating" name="rating" placeholder="5.5"
+    [ngClass]="{'element-invalid': rating.invalid}">
   </div>
-  <div *ngIf="categories.video" class="filter-element">
-    <label>TypeVideo
-      <select [(ngModel)]="typeVideo" name="estimatedReadingTime">
-        <option value="all" selected>all</option>
-        <option value="movie">movie</option>
-        <option value="series">series</option>
-        <option value="episodes">episodes</option>
-      </select>
-    </label>
-    <!--<div>
-      Type Video
-    </div>
-    <div class="">
-      <label>All
-        <input [(ngModel)]="typeVideo" type="radio" name="type" value="all" (change)="changeItems()" checked>
-      </label>
-      <label>Movie
-        <input [(ngModel)]="typeVideo" type="radio" name="type" value="movie" (change)="changeItems()">
-      </label>
-      <label>Series
-        <input [(ngModel)]="typeVideo" type="radio" name="type" value="series" (change)="changeItems()">
-      </label>
-      <label>Episode
-        <input [(ngModel)]="typeVideo" type="radio" name="type" value="episode" (change)="changeItems()">
-      </label>
-    </div>-->
+  <div *ngIf="categories.video" class="row align-items-center justify-content-between filter-element">
+    <label>TypeVideo</label>
+    <select [(ngModel)]="typeVideo" name="typeVideo">
+      <option value="all" selected>all</option>
+      <option value="movie">movie</option>
+      <option value="series">series</option>
+      <option value="episodes">episodes</option>
+    </select>
   </div>
-  <div *ngIf="namePage == 'search'">
-    <label>Video
-      <input [(ngModel)]="categories.video" name="video" type="checkbox" checked>
-    </label>
-    <label>Books
-      <input [(ngModel)]="categories.books" name="books" type="checkbox" checked>
-    </label>
-    <label>Games
-      <input [(ngModel)]="categories.games" name="games" type="checkbox" checked>
-    </label>
+  <div *ngIf="namePage == 'search'" class="row justify-content-center align-items-center filter-element">
+    <label>Video</label>
+    <mat-checkbox [(ngModel)]="categories.video" name="video"></mat-checkbox>
+    <label>Books</label>
+    <mat-checkbox [(ngModel)]="categories.books" name="books"></mat-checkbox>
+    <label>Games</label>
+    <mat-checkbox [(ngModel)]="categories.games" name="games"></mat-checkbox>
   </div>
   <div class="row justify-content-between filter-element">
-    <button class="btn btn-primary element-button element-button-apply" (click)="changeParametrs()">Apply</button>
+    <button [disabled]="form.invalid" class="btn btn-primary element-button element-button-apply" (click)="changeParametrs()">Apply</button>
     <button class="btn btn-danger element-button element-button-reset" (click)="reset()">Reset</button>
   </div>
-</div>
+</form>

@@ -73,6 +73,10 @@ export class CartService implements OnInit{
     this.modifyLocalStorage();
   }
 
+  public clearCart(){
+    this.productCart = [];
+  }
+
   public modifyLocalStorage(){
     localStorage.setItem('cart', JSON.stringify(this.productCart));
   }

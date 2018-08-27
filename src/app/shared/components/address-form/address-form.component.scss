@@ -2,6 +2,7 @@
 $lightRed: rgba(255,0,0, 0.3);
 $red: red;
 $darklyRed: rgba(255,0,0, 0.5);
+$lightBlue: rgba(0, 0, 255, 0.5);
 
 .address{
 
@@ -28,7 +29,7 @@ $darklyRed: rgba(255,0,0, 0.5);
         align-items: center;
 
         &-title{
-            color: $darklyRed;
+            color: $lightBlue;
         }
 
         &-items{

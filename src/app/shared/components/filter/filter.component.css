@@ -1,7 +1,7 @@
 input {
   margin: 0 10px;
   border-radius: 5px;
-  color: red;
+  color: blue;
   border-color: rgba(0, 0, 255, 0.5);
 }
 
@@ -10,12 +10,15 @@ input:focus {
 }
 
 select {
-  color: red;
+  color: blue;
   border-color: rgba(0, 0, 255, 0.5);
+  border-radius: 5px;
 }
 
 label {
   color: red;
+  padding-left: 20px;
+  padding-right: 5px;
 }
 
 .filter-title {
@@ -28,11 +31,17 @@ label {
 }
 
 .filter-element {
-  padding: 10px 0;
+  width: 100%;
+  padding: 10px 10px;
 }
 
 .filter-element .element-date {
   width: 90px;
+}
+
+.filter-element .element-invalid {
+  border-color: red;
+  color: red;
 }
 
 .filter-element .element-time {

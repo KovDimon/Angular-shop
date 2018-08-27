@@ -25,18 +25,15 @@
             </div>
         </form>
         <div class="col-md-1">
-            <!--<a [routerLink]="" href="#">-->
             <button [routerLink]="'/cart'" class="btn btn-default-outline align-items-center header-button">
                 <span class="header-button-img"></span>Cart
                 <span *ngIf="count()" class="header-button-count">{{count()}}</span>
             </button>
-            <!--</a>-->
         </div>
         <div class="row col-md-2 justify-content-center header-dropdown">
             <a href="#" *ngIf="!authService.isAuthenticated()" (click)="login($event)">Log In</a>
-            <!--<a href="#" *ngIf="authService.isAuthenticated()" (click)="logout($event)">Log Out</a>-->
             <a href="#" *ngIf="authService.isAuthenticated() && authService.isLoaded" class="header-dropdown-link" (click)="dropDown($event)">{{authService.getUserName()}}
-                <span class="header-dropdown-caret"></span>
+                <i class="material-icons">arrow_drop_down</i>
             </a>
             <ul *ngIf="isShow" class="row justify-content-center align-items-center header-dropdown-menu">
                 <li class="">
@@ -52,4 +49,3 @@
         </div>
     </div>
 </div>
-<!--<img src="assets/img/icons.svg" alt="">-->

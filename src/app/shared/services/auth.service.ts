@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import * as auth0 from 'auth0-js';
 import { Router } from '@angular/router';
 import { Profile } from '../models/profile.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, of } from 'rxjs';
 //import { Observer } from 'rxjs/Observer';
 import { map } from 'rxjs/operators';
 import { Address } from '../models/address.model';
@@ -24,11 +24,6 @@ export class AuthService {
 
   });
 
-  /*private headers = new HttpHeaders({
-    'Authorization': `Bearer 5wc2kq-4xrFEHvpJeNRLQgoOcO4gAQ_Y`,
-    'Content-Type': 'application/json'
-  });*/
-
   private userProfile: Profile;
 
   private userName: string;
@@ -38,7 +33,16 @@ export class AuthService {
   constructor(
     private router: Router,
     private http: HttpClient
-  ) {}
+  ) {
+      this.getUser().subscribe(
+        profile => {
+          this.userProfile = profile;
+          console.log(this.userProfile);
+          this.isLoaded = true;
+        },
+        err => console.log("ERROR: data profile don't come in AuthService")
+      );
+  }
 
   public login(){
     this.auth0.authorize();
@@ -49,7 +53,7 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.getUser();
+        this.getUser().subscribe(profile => {this.userProfile = profile; this.isLoaded = true;});
         this.router.navigate(['/main-page']);
       } else if (err) {
         this.router.navigate(['/main-page']);
@@ -84,44 +88,48 @@ export class AuthService {
 
     return Observable.create((observer: Observer<any>) =>{
     const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
+    /*if (!accessToken) {
       throw new Error('Access Token must exist to fetch profile');
-    }
+    }*/
+    if(accessToken){
+      this.auth0.client.userInfo(accessToken, (err, profile) => {
+
+        console.log(profile);
+        //if (profile) {
+          this.isLoaded = false;
+          this.userName = profile.name;
   
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-
-      console.log(profile);
-      if (profile) {
-        this.isLoaded = false;
-        this.userName = profile.name;
-
-        if(JSON.parse(localStorage.getItem(`${this.userName}`))){
-          this.userProfile = JSON.parse(localStorage.getItem(`${this.userName}`));
-          //observer.next(JSON.parse(localStorage.getItem(`${this.userName}`)));
-        }else{
-          let newProfile = new Profile();
-        newProfile.firstName = profile.name;
-        newProfile.email = profile.name;
-        newProfile.nickName = profile.nickname;
-        newProfile.picture = profile.picture;
-        newProfile.currency = 'USD';
-        newProfile.phone = '';
-        newProfile.mobile = '';
-        newProfile.address = [];
-        newProfile.lastName = '';
-        newProfile.country = '';
-        
-        this.userProfile = newProfile;
-        this.modifyLocalStorage();
-        observer.next(newProfile);
-        }
-        observer.next(this.userProfile);
-        this.isLoaded = true;
-
-        //console.log(this.userProfile);
-      }
-      //cb(err, this.userProfile);
-    });
+          if(JSON.parse(localStorage.getItem(`${this.userName}`))){
+            this.userProfile = JSON.parse(localStorage.getItem(`${this.userName}`));
+            //observer.next(JSON.parse(localStorage.getItem(`${this.userName}`)));
+          }else{
+            let newProfile = new Profile();
+          newProfile.firstName = profile.name;
+          newProfile.email = profile.name;
+          newProfile.nickName = profile.nickname;
+          newProfile.picture = profile.picture;
+          newProfile.currency = 'USD';
+          newProfile.phone = '';
+          newProfile.mobile = '';
+          newProfile.address = [];
+          newProfile.lastName = '';
+          newProfile.country = '';
+          
+          this.userProfile = newProfile;
+          this.modifyLocalStorage();
+          //observer.next(newProfile);
+          }
+          observer.next(this.userProfile);
+          this.isLoaded = true;
+  
+          //console.log(this.userProfile);
+        //}
+        //cb(err, this.userProfile);
+      });
+    }else{
+      observer.next(null);
+    }
+    
     
   });
   }
@@ -156,8 +164,9 @@ export class AuthService {
     return this.userProfile.address;
   }
 
-  public getProfile(): Profile{
-    return this.userProfile;
+  public getProfile() {
+    //this.profile.emit(this.userProfile);
+    return of(this.userProfile);
   }
 
   public getUserName(): string{

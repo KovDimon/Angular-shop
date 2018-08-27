@@ -62,16 +62,17 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
     this.products = this.cartService.getCart();
     this.total = this.cartService.totalPrice();
-    if(localStorage.getItem('id_token')){
       this.authService.getUser().subscribe(
         profile => {
+          if(!profile){
+            return;
+          }
           this.profile = profile;
           this.addresses = profile.address;
           this.isLoaded = true;
         },
         err => console.log("ERROR: data profile don't come in Checkout")
       );
-    }
   }
 
   public previos(){
