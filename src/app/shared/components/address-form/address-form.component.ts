@@ -1,9 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-
-import { Address } from '../../models/address.model';
 import { FormGroup, FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorStateMatcher } from '@angular/material';
+
+import { Address } from '../../models/address.model';
+import { AuthService } from '../../services/auth.service';
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -25,6 +27,7 @@ export class AddressFormComponent implements OnInit {
   @Output() addAddress = new EventEmitter<any>();
 
   constructor(
+    private authService: AuthService,
     private toastr: ToastrService
   ) { }
 
@@ -55,7 +58,7 @@ export class AddressFormComponent implements OnInit {
   public add(form){
     this.toastr.success('Address update to profile!', 'Success!');
     this.addAddress.emit({
-      id: this.makeId(),
+      id: this.authService.makeId(),
       country: this.country,
       streetAddress: this.streetAddress,
       city: this.city,
@@ -67,10 +70,6 @@ export class AddressFormComponent implements OnInit {
     this.streetAddress = '';
     this.zip = '';
     this.state = '';
-  }
-
-  private makeId(): string{
-    return Math.random().toString(36).substr(2,16);
   }
 
   public cancel(){

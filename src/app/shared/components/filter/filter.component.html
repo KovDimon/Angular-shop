@@ -47,7 +47,7 @@
     <mat-checkbox [(ngModel)]="categories.games" name="games"></mat-checkbox>
   </div>
   <div class="row justify-content-between filter-element">
-    <button [disabled]="form.invalid" class="btn btn-primary element-button element-button-apply" (click)="changeParametrs()">Apply</button>
+    <button type="button" [disabled]="form.invalid" class="btn btn-primary element-button element-button-apply" (click)="changeParametrs($event)">Apply</button>
     <button class="btn btn-danger element-button element-button-reset" (click)="reset()">Reset</button>
   </div>
 </form>

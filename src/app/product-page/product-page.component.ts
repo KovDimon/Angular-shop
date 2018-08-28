@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { VideoApiService } from '../shared/services/video-api.service';
 import { BooksApiService } from '../shared/services/books-api.service';
 import { GamesApiService } from '../shared/services/games-api.service';
-import { Product } from '../shared/models/product';
+import { Product } from '../shared/models/product.model';
 import { CartService } from '../shared/services/cart.service';
 import { AuthService } from '../shared/services/auth.service';
 import { Profile } from '../shared/models/profile.model';
@@ -46,14 +46,6 @@ export class ProductPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /*this.route.params.subscribe(
-      (params: Params) => {
-        this.nameCategory = params['nameCategory'];
-        this.id = params['id'];
-        //this.loaded = true;
-      }
-    );
-    this.runService();*/
 
     this.route.params.pipe(
       mergeMap((params:Params): ObservableInput<{}> => {
@@ -74,21 +66,10 @@ export class ProductPageComponent implements OnInit {
       })
     ).subscribe(
       (data) => {
-        console.log('Data', data);
         this.product = data[0];
-        this.profile = data[1]
+        this.profile = data[1];
         this.loaded = true;
     });
-    //this.loaded = false;
-    /*if(localStorage.getItem('id_token')){
-      this.authService.getUser().subscribe(
-        profile => {
-          this.profile = profile;
-          this.loaded = true;
-        },
-        err => console.log("ERROR: data profile don't come in Product-page")
-      );
-    }*/
   }
 
   public buyProduct(){
@@ -120,5 +101,16 @@ export class ProductPageComponent implements OnInit {
     if(localStorage.getItem('id_token')){
     this.authService.getUser()
     }
+  }
+
+  public filteredWebsites(): any[]{
+    return this.product.websites = this.product.websites.filter(
+      obj => {
+        return (obj.category == 1 ||
+        obj.category == 4 ||
+        obj.category == 5 ||
+        obj.category == 8 ||
+        obj.category == 9);
+      });
   }
 }

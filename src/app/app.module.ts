@@ -20,7 +20,6 @@ import { FilterComponent } from './shared/components/filter/filter.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddressComponent } from './address/address.component';
-import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AddressFormComponent } from './shared/components/address-form/address-form.component';
 import { AddressDisplayComponent } from './shared/components/address-display/address-display.component';
@@ -41,7 +40,6 @@ import { CallbackComponent } from './callback/callback.component';
     SearchComponent,
     ProfileComponent,
     AddressComponent,
-    DropdownDirective,
     CheckoutComponent,
     AddressFormComponent,
     AddressDisplayComponent,

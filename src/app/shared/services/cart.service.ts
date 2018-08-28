@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter, OnInit } from '@angular/core';
-import { Product } from '../models/product';
+import { Product } from '../models/product.model';
+
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,7 +16,6 @@ export class CartService implements OnInit{
     try {
       if (JSON.parse(localStorage.getItem('cart'))) {
         this.productCart = JSON.parse(localStorage.getItem('cart'));
-        console.log(this.productCart);
       } else {
         this.productCart = [];
       }
@@ -75,6 +75,7 @@ export class CartService implements OnInit{
 
   public clearCart(){
     this.productCart = [];
+    this.modifyLocalStorage();
   }
 
   public modifyLocalStorage(){

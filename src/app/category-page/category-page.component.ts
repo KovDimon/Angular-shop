@@ -7,8 +7,8 @@ import { VideoApiService } from '../shared/services/video-api.service';
 import { BooksApiService } from '../shared/services/books-api.service';
 import { GamesApiService } from '../shared/services/games-api.service';
 import { CartService } from '../shared/services/cart.service';
-import { Product } from '../shared/models/product';
-import { Categories } from '../shared/models/categories';
+import { Product } from '../shared/models/product.model';
+import { Categories } from '../shared/models/categories.model';
 
 @Component({
   selector: 'app-category-page',
@@ -47,7 +47,6 @@ export class CategoryPageComponent implements OnInit {
 
     this.route.params.pipe(
       mergeMap((params:Params): ObservableInput<{}> => {
-        console.log(this.categories);
 
         this.categories.books = false;
         this.categories.video = false;
@@ -65,7 +64,6 @@ export class CategoryPageComponent implements OnInit {
       })
     ).subscribe(
       (dataProducts: Product[]) => {
-        console.log('Data', dataProducts);
         this.products = dataProducts;
         this.products.length = 9;
         this.loaded = true;

@@ -16,7 +16,9 @@
 
 .address-features input {
   width: 290px;
+  height: 22.22px;
   color: blue;
+  background-color: rgba(0, 0, 0, 0);
   border: none;
 }
 

@@ -1,6 +1,8 @@
 a {
   text-decoration: none;
   color: rgba(255, 0, 0, 0.5);
+  padding: 0;
+  margin: 0;
 }
 
 a:hover {
@@ -15,6 +17,7 @@ a:hover {
 .product-content {
   padding: 20px 0;
   border-top: solid 2px rgba(255, 0, 0, 0.3);
+  width: 893px;
 }
 
 .product-content .content {
@@ -39,6 +42,13 @@ a:hover {
   position: relative;
 }
 
+.product-content .content-parametrs .parametrs-title-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 13%;
+}
+
 .product-content .content-parametrs .parametrs-img-link {
   content: '';
   width: 32px;
@@ -51,12 +61,16 @@ a:hover {
 }
 
 .product-content .content-parametrs .parametrs-link {
-  padding: 0 10px;
-  color: red;
+  margin: 0 10px;
+  color: blue;
 }
 
-.product-content .content-parametrs .parametrs-link:hover {
-  color: blue;
+.product-content .content-parametrs .parametrs-link-img {
+  width: 32px;
+}
+
+.product-content .content-parametrs .parametrs-link .material-icons-size {
+  font-size: 32px;
 }
 
 .product-content .content-price {

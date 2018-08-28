@@ -22,7 +22,7 @@ export class Product{
     public productionCompanies?: string;
     public count?: number;
     public trailer?: string;
-    public websites?: string;
+    public websites?: any[];
     public estimatedReadingTime?: number;
     public textWithHTML?: string;
     

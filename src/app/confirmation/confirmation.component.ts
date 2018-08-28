@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { ObservableInput } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { mergeMap } from 'rxjs/operators';
 
 import { CartService } from '../shared/services/cart.service';
 import { AuthService } from '../shared/services/auth.service';
-import { Profile } from 'selenium-webdriver/firefox';
-import { mergeMap } from 'rxjs/operators';
-import { ObservableInput } from 'rxjs';
 import { Address } from '../shared/models/address.model';
 
 
@@ -27,8 +26,6 @@ export class ConfirmationComponent implements OnInit {
 
   private userLastName: string;
 
-  //private date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
@@ -41,7 +38,6 @@ export class ConfirmationComponent implements OnInit {
       this.route.queryParams.pipe(mergeMap(
           (params: Params): ObservableInput<any> => {
             this.idAddress = params.id;
-            console.log(this.idAddress);
             return this.authService.getUser();
           }
       )).subscribe(
@@ -49,7 +45,6 @@ export class ConfirmationComponent implements OnInit {
           if(!dataProfile){
             return;
           }
-          console.log(dataProfile);
           this.address = dataProfile.address.find(obj => obj.id === this.idAddress);
           this.userFirstName = dataProfile.firstName;
           this.userLastName = dataProfile.lastName;
@@ -64,7 +59,6 @@ export class ConfirmationComponent implements OnInit {
 
   public getDate(): string{
     let date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-    console.log(date);
     date.setDate(date.getDate() + 14);
 
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { combineLatest, Observable, ObservableInput } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
-import { Product } from '../shared/models/product';
+import { Product } from '../shared/models/product.model';
 import { VideoApiService } from '../shared/services/video-api.service';
 import { BooksApiService } from '../shared/services/books-api.service';
 import { GamesApiService } from '../shared/services/games-api.service';
-import { Categories } from '../shared/models/categories';
-import { mergeMap } from 'rxjs/operators';
+import { Categories } from '../shared/models/categories.model';
+
 
 
 @Component({
@@ -46,12 +47,10 @@ export class SearchComponent implements OnInit {
   private changeItems(parametrs?){
     this.loaded = false;
     this.isEmptySearch = false;
-    console.log(parametrs);
 
     this.route.queryParams.pipe(mergeMap(
       (params: Params): ObservableInput<any> => {
         this.query = params.query;
-        console.log(parametrs);
         return combineLatest(
           this.videoApiService.searchVideo(params.query, parametrs),
           this.booksApiService.searchBooks(params.query, parametrs),
@@ -59,7 +58,6 @@ export class SearchComponent implements OnInit {
         )
       })).subscribe(
       data => {
-        console.log(data);
         if (this.categories.video) {
           if(data[0].length > 6){
               data[0].length = 6;
@@ -80,11 +78,9 @@ export class SearchComponent implements OnInit {
           }
           this.products = this.products.concat(data[2]);
         }
-          //console.log(this.isEmptySearch)
           if(!this.products.length){
             this.isEmptySearch = true;
           }
-          //console.log(this.isEmptySearch)
         this.loaded = true;
     });
   }

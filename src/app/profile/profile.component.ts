@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../shared/services/auth.service';
 import { Profile } from '../shared/models/profile.model';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +30,6 @@ export class ProfileComponent implements OnInit {
           this.profile = profile; 
           this.isLoaded = true;
         });
-      console.log(this.profile);
   }
 
   public save(){

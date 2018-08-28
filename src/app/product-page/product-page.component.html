@@ -56,7 +56,9 @@
           </span>{{product.language}}
         </div>
         <div *ngIf="product.trailer" class="content-parametrs">
-          <span class="parametrs-title"><a href="{{product.trailer}}">Trailer</a> 
+            <span class="parametrs-title">
+          <a class=" parametrs-title-link" href="{{product.trailer}}"
+            >Trailer<i class="material-icons">play_arrow</i></a>
           </span>
         </div>
 
@@ -64,9 +66,15 @@
           <span class="parametrs-title">Runtime:
           </span>{{product.runtime}}
         </div>
-        <div *ngIf="product.websites" class="row align-items-center content-parametrs content-parametrs-websites">
+        <div *ngIf="product.websites.length != 0" class="row align-items-center content-parametrs content-parametrs-websites">
           <span class="parametrs-title">Websites:
-          </span><a class="parametrs-link" *ngFor="let website of product.websites" href="{{website.url}}">{{website.name}}</a>
+          </span><a *ngFor="let website of filteredWebsites()" href="{{website.url}}" class="row align-items-end parametrs-link">
+            <i *ngIf="website.category == 1" class="material-icons material-icons-size">home</i>
+            <img class="parametrs-link-img" *ngIf="website.category == 4" src="../../assets/img/social/facebook.png" alt="">
+            <img class="parametrs-link-img" *ngIf="website.category == 5" src="../../assets/img/social/twitter.png" alt="">
+            <img class="parametrs-link-img" *ngIf="website.category == 8" src="../../assets/img/social/instagram.png" alt="">
+            <img class="parametrs-link-img" *ngIf="website.category == 9" src="../../assets/img/social/youtube.png" alt="">
+          </a>
         </div>
         <div *ngIf="product.writers" class="content-parametrs">
           <span class="parametrs-title">Writers:

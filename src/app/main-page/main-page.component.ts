@@ -4,7 +4,7 @@ import { combineLatest } from 'rxjs';
 import { VideoApiService } from '../shared/services/video-api.service';
 import { BooksApiService } from '../shared/services/books-api.service';
 import { GamesApiService } from '../shared/services/games-api.service';
-import { Product } from '../shared/models/product';
+import { Product } from '../shared/models/product.model';
 
 @Component({
   selector: 'app-main-page',
@@ -24,13 +24,10 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
 
-    //Observable.
-
     combineLatest (
       this.videoApiService.getNewVideo(),
       this.booksApiService.getNewBooks(),
       this.gamesApiService.getNewGames()
-      //this.gamesApiService.getGames();
     ).subscribe(
       newData => {
         this.newDataVideos = newData[0];
@@ -39,30 +36,9 @@ export class MainPageComponent implements OnInit {
         this.newDataBooks.length = 6;
         this.newDataGames = newData[2];
         this.newDataGames.length =6;
-        //this.newDataBooks.length = 6;
-        console.log(this.newDataVideos);
-        console.log(this.newDataBooks);
-        console.log(this.newDataGames);
       },
       error => console.log("ERROR: data didn't work")
     );
-
-    //this.year = this.date.getFullYear();
-    /*this.videoApiService.getNewVideos()
-    .subscribe(
-      (newData: Product[]) => {
-        this.newDataVideos = newData;
-        console.log(newData);
-      },
-      error => console.log("ERROR: video search didn't work")
-    );*/
- 
-    /*this.booksApiService.getBooks('new').subscribe(
-      newData => this.newDataBooks = newData
-    );*/
-
-    //console.log(this.newDataBooks);
-    //console.log(this.newDataVideos);
   }
 
 }

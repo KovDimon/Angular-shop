@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from '../shared/services/auth.service';
 import { Profile } from '../shared/models/profile.model';
 import { Address } from '../shared/models/address.model';
@@ -33,9 +34,6 @@ export class AddressComponent implements OnInit {
         },
         err => console.log("ERROR: data profile don't come in Address")
       );
-    
-    //this.addresses = this.profile; 
-    console.log(this.addresses);
   }
 
   public addAddress(event){

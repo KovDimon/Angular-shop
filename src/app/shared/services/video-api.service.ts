@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 
-import { Product } from '../models/product';
+import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +27,6 @@ export class VideoApiService {
 
     return this.http.get(`movies_api/?apikey=1a8fdd0&s=new&y=${this.date.getFullYear()}`)
     .pipe(map((dataVideoObject: any) => {
-      console.log('123'); 
-      console.log(dataVideoObject);
 
       let dataVideo = dataVideoObject.Search;
       this.dataVideos = this.transformItems(dataVideo);
@@ -47,10 +45,8 @@ export class VideoApiService {
       year ='';
       type='';
     }
-    console.log(name, year, type);
     return this.http.get(`movies_api/?apikey=1a8fdd0&s=${name}&y=${year}&type=${type}`)
     .pipe(map((dataVideoObject: any) => {
-      console.log(dataVideoObject); 
       if(dataVideoObject.Response == 'True'){
         let dataVideo = dataVideoObject.Search;
         this.dataVideos = this.transformItems(dataVideo);
@@ -80,6 +76,7 @@ export class VideoApiService {
       product.country = obj.Country != 'N/A' ? obj.Country : '';
       product.genre = obj.Genre  != 'N/A' ? obj.Genre : '';
       product.writers = obj.Writer != 'N/A' ? obj.Writer : '';
+      product.websites = obj.websites ? obj.websites : [];
 
       return product;
     });
@@ -104,12 +101,8 @@ export class VideoApiService {
       product.country = obj.Country != 'N/A' ? obj.Country : '';
       product.genre = obj.Genre != 'N/A' ? obj.Genre : '';
       product.writers = obj.Writer != 'N/A' ? obj.Writer : '';
+      product.websites = obj.websites ? obj.websites : [];
 
       return product;
   }
-
-  /*public searchVideo(): Observable<any>{
-    return this.http.get(`movies_api/?apikey=1a8fdd0&s=new&y=2018`)
-    .pipe(tap(dataVideo => console.log('Video data received')));
-  }*/
 }

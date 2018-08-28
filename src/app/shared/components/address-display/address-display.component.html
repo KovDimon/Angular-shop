@@ -1,14 +1,19 @@
 <div class="address-features">
     <p>
-      <span>Zip / Postal Code:</span><span *ngIf="!isEdit" class="address-text">{{address.zip}}</span><input *ngIf="isEdit" name="zip" [(ngModel)]="address.zip" type="text"></p>
+      <span>Zip / Postal Code:</span><span *ngIf="!isEdit" class="address-text">{{address.zip}}</span>
+      <input *ngIf="isEdit" name="zip" [(ngModel)]="address.zip" type="text"></p>
     <p>
-      <span>Street Address:</span><span *ngIf="!isEdit" class="address-text">{{address.streetAddress}}</span><input *ngIf="isEdit" name="streetAddress" [(ngModel)]="address.streetAddress" type="text"></p>
+      <span>Street Address:</span><span *ngIf="!isEdit" class="address-text">{{address.streetAddress}}</span>
+      <input *ngIf="isEdit" name="streetAddress" [(ngModel)]="address.streetAddress" type="text"></p>
     <p>
-      <span>City:</span><span *ngIf="!isEdit" class="address-text">{{address.city}}</span><input *ngIf="isEdit" name="city" [(ngModel)]="address.city" type="text"></p>
+      <span>City:</span><span *ngIf="!isEdit" class="address-text">{{address.city}}</span>
+      <input *ngIf="isEdit" name="city" [(ngModel)]="address.city" type="text"></p>
     <p>
-      <span>State / Region:</span><span *ngIf="!isEdit" class="address-text">{{address.state}}</span><input *ngIf="isEdit" name="state" [(ngModel)]="address.state" type="text"></p>
+      <span>State / Region:</span><span *ngIf="!isEdit" class="address-text">{{address.state}}</span>
+      <input *ngIf="isEdit" name="state" [(ngModel)]="address.state" type="text"></p>
     <p>
-      <span>Country:</span><span *ngIf="!isEdit" class="address-text">{{address.country}}</span><input *ngIf="isEdit" name="country" [(ngModel)]="address.country" type="text"></p>
+      <span>Country:</span><span *ngIf="!isEdit" class="address-text">{{address.country}}</span>
+      <input *ngIf="isEdit" name="country" [(ngModel)]="address.country" type="text"></p>
       <div (click)="delete(address)" class="address-features-delete"></div>
       <div *ngIf="!isEdit" (click)="edit()" class="address-features-edit"></div>
       <div *ngIf="isEdit" (click)="save(address)" class="address-features-save"></div>

@@ -1,6 +1,7 @@
 $lightRed: rgba(255,0,0, 0.3);
 $red: red;
 $darklyRed: rgba(255,0,0, 0.5);
+$lightBlue: rgba(0,0,255, 0.5);
 
 .profile{
 
@@ -34,6 +35,19 @@ $darklyRed: rgba(255,0,0, 0.5);
         flex-direction: column;
         align-items: center;
 
+    }
+
+    &-promocode{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        border: 2px solid $red;
+        border-radius: 10px;
+
+        &-value{
+            color: $lightBlue;
+        }
     }
 
     &-button{

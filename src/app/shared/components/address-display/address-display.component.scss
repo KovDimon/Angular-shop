@@ -21,7 +21,9 @@ $darklyRed: rgba(255,0,0, 0.5);
 
         input{
             width: 290px;
+            height: 22.22px;
             color: blue;
+            background-color: rgba(0, 0, 0, 0);
             border: none;
 
             &:focus{
@@ -45,7 +47,7 @@ $darklyRed: rgba(255,0,0, 0.5);
             right: 0;
             width: 32px;
             height: 32px;
-            background: url('../../../../assets/img/icons.png') no-repeat -228px -1894px; //-140px -230px;
+            background: url('../../../../assets/img/icons.png') no-repeat -228px -1894px;
             background-size: 488px 2111px;
             opacity: 0.7;
 
@@ -62,7 +64,7 @@ $darklyRed: rgba(255,0,0, 0.5);
             right: 40px;
             width: 32px;
             height: 32px;
-            background: url('../../../../assets/img/icons.png') no-repeat -351px -291px; //-140px -230px;
+            background: url('../../../../assets/img/icons.png') no-repeat -351px -291px;
             background-size: 488px 2111px;
             opacity: 0.7;
 
@@ -78,7 +80,7 @@ $darklyRed: rgba(255,0,0, 0.5);
             right: 40px;
             width: 32px;
             height: 32px;
-            background: url('../../../../assets/img/icons.png') no-repeat -351px -918px; //-140px -230px;
+            background: url('../../../../assets/img/icons.png') no-repeat -351px -918px;
             background-size: 488px 2111px;
             opacity: 0.7;
 

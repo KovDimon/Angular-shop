@@ -3,8 +3,7 @@ import * as auth0 from 'auth0-js';
 import { Router } from '@angular/router';
 import { Profile } from '../models/profile.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Observer, of } from 'rxjs';
-//import { Observer } from 'rxjs/Observer';
+import { Observable, Observer } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Address } from '../models/address.model';
 
@@ -36,12 +35,9 @@ export class AuthService {
   ) {
       this.getUser().subscribe(
         profile => {
-          this.userProfile = profile;
-          console.log(this.userProfile);
-          this.isLoaded = true;
-        },
-        err => console.log("ERROR: data profile don't come in AuthService")
-      );
+          //this.userProfile = profile;
+          this.isLoaded = false;
+        });
   }
 
   public login(){
@@ -88,20 +84,15 @@ export class AuthService {
 
     return Observable.create((observer: Observer<any>) =>{
     const accessToken = localStorage.getItem('access_token');
-    /*if (!accessToken) {
-      throw new Error('Access Token must exist to fetch profile');
-    }*/
+   
     if(accessToken){
       this.auth0.client.userInfo(accessToken, (err, profile) => {
-
-        console.log(profile);
-        //if (profile) {
+        
           this.isLoaded = false;
           this.userName = profile.name;
   
           if(JSON.parse(localStorage.getItem(`${this.userName}`))){
             this.userProfile = JSON.parse(localStorage.getItem(`${this.userName}`));
-            //observer.next(JSON.parse(localStorage.getItem(`${this.userName}`)));
           }else{
             let newProfile = new Profile();
           newProfile.firstName = profile.name;
@@ -114,17 +105,14 @@ export class AuthService {
           newProfile.address = [];
           newProfile.lastName = '';
           newProfile.country = '';
+          newProfile.promoCode = this.makeId();
+          newProfile.percent = 25;
           
           this.userProfile = newProfile;
           this.modifyLocalStorage();
-          //observer.next(newProfile);
           }
           observer.next(this.userProfile);
           this.isLoaded = true;
-  
-          //console.log(this.userProfile);
-        //}
-        //cb(err, this.userProfile);
       });
     }else{
       observer.next(null);
@@ -134,39 +122,12 @@ export class AuthService {
   });
   }
 
-  /*public getUser(){
-    this.headers.set('Authorization', `Bearer {${localStorage.getItem('access_token')}}`);
-    this.headers.set('Content-Type', 'application/json');
-    console.log(this.headers);
-    this.http.get('auth0_api/userinfo', {
-      headers: this.headers
-    }).pipe(map( (profile: any): Profile => {
-      let newProfile = new Profile();
-      console.log(profile);
-      newProfile.id = profile.user_id;
-      newProfile.firstName = profile.name;
-      newProfile.nickName = profile.nickname;
-      for(let key in profile){
-        if(profile[key]=='email_verified' || 'updated_at'|| 'created_at'|| 'sub'){
-          continue;
-        }
-       newProfile[key] = profile[key];
-      }
-      return newProfile;
-    })).subscribe(
-      dataUser => {this.userProfile = dataUser;  console.log(this.userProfile);},
-      error => console.log("ERROR: data user don't got")
-     
-    );
-  }*/
+  public makeId(): string{
+    return Math.random().toString(36).substr(2,16);
+  }
 
   public getAdresses(): Address[]{
     return this.userProfile.address;
-  }
-
-  public getProfile() {
-    //this.profile.emit(this.userProfile);
-    return of(this.userProfile);
   }
 
   public getUserName(): string{
@@ -195,9 +156,3 @@ export class AuthService {
   }
   
 }
-
-/*.subscribe(
-          profile => {
-            this.userProfile = profile;
-            this.isLoaded = true;
-          });*/

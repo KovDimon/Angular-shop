@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 import { CartService } from '../shared/services/cart.service';
-import { Product } from '../shared/models/product';
+import { Product } from '../shared/models/product.model';
 import { AuthService } from '../shared/services/auth.service';
 import { Address } from '../shared/models/address.model';
 import { Profile } from '../shared/models/profile.model';
@@ -30,10 +30,6 @@ export class CheckoutComponent implements OnInit {
   private selectedPayment: string;
 
   private promoCode: string = '';
-
-  private percent: number = 25;
-
-  private numberPromoCode: string = '123456789';
 
   private products: Product[] = [];
 
@@ -102,10 +98,10 @@ export class CheckoutComponent implements OnInit {
 
   public savePromoCode(){
     if(this.promoCode){
-      if(this.promoCode === this.numberPromoCode){
+      if(this.promoCode === this.profile.promoCode){
         this.discount = true;
         this.toastr.success('You have 25% discount!', 'Success!');
-        this.cartService.modifyPriceProducts(this.percent);
+        this.cartService.modifyPriceProducts(this.profile.percent);
       }else{
         this.toastr.error('Invalid promocode!', 'Error!');
         this.promoCode = '';

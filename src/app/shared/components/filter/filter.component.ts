@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Categories } from '../../models/categories';
+
+import { Categories } from '../../models/categories.model';
 
 @Component({
   selector: 'app-filter',
@@ -22,7 +23,7 @@ export class FilterComponent implements OnInit {
 
   private minimumDate: string = '';
 
-  private yearOfRelease: string = '2018'
+  private yearOfRelease: string = ''
 
   private authorName: string = '';
 
@@ -35,9 +36,9 @@ export class FilterComponent implements OnInit {
   ngOnInit() {
   }
  
-  changeParametrs(){
+  changeParametrs(event){
+    event.preventDefault();
 
-    console.log(this.maximumDate.slice(6,10));
     this.filterItems.emit({
       yearOfRelease: this.maximumDate.slice(6,10),
       typeVideo: this.typeVideo,

@@ -11,6 +11,7 @@ export class Profile {
   public address?: Address[];
   public phone?: string;
   public mobile?: string;
-
+  public promoCode: string;
+  public percent: number;
   constructor() {}
 }

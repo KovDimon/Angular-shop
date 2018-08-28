@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { CartService } from '../shared/services/cart.service';
-import { Product } from '../shared/models/product';
-import { Router } from '@angular/router';
+import { Product } from '../shared/models/product.model';
 import { AuthService } from '../shared/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
 import { Profile } from '../shared/models/profile.model';
 
 @Component({
@@ -32,25 +32,6 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.listProducts = this.cartService.getCart();
     this.total = this.cartService.totalPrice();
-    /*this.authService.getProfile().subscribe(
-      profile => {this.profile = profile; this.isLoaded = true;}
-    );*/
-    //this.authService.getProfile();
-    console.log(this.profile);
-    /*if(localStorage.getItem('id_token')){
-      this.authService.getUser().subscribe(
-        profile =>{ 
-          this.profile = profile;
-          this.isLoaded = true;
-        },
-        err => console.log("ERROR: data profile don't come in Cart")
-      );
-    }else{
-      this.profile = new Profile();
-      this.profile.currency = 'USD';
-      this.isLoaded = true;
-    }*/
-
     this.authService.getUser().subscribe(
       profile =>{ 
         this.profile = profile ? profile : new Profile().currency = 'USD';
