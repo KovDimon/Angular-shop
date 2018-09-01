@@ -11,6 +11,7 @@ import { AddressComponent } from "./address/address.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { ConfirmationComponent } from "./confirmation/confirmation.component";
 import { CallbackComponent } from "./callback/callback.component";
+import { AuthGuard } from "./shared/guards/auth.guard";
 
 const routes: Routes =[
     {path: '', redirectTo: 'main-page', pathMatch: 'full'},
@@ -19,11 +20,11 @@ const routes: Routes =[
     {path: 'cart', component: CartComponent},
     {path: 'category/:nameCategory', component: CategoryPageComponent},
     {path: 'search', component: SearchComponent},
-    {path: 'profile', component: ProfileComponent},
-    {path: 'address', component: AddressComponent},
-    {path: 'checkout', component: CheckoutComponent},
-    {path: 'confirmation', component: ConfirmationComponent},
-    {path: 'callback', component: CallbackComponent}
+    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+    {path: 'address', component: AddressComponent, canActivate: [AuthGuard]},
+    {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
+    {path: 'confirmation', component: ConfirmationComponent, canActivate: [AuthGuard]},
+    {path: 'callback', component: CallbackComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

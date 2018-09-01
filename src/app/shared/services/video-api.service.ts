@@ -71,7 +71,7 @@ export class VideoApiService {
       product.actors = obj.Actors != 'N/A' ? obj.Actors : '';
       product.price = obj.imdbRating != 'N/A' ? Math.floor(obj.imdbRating*5) : obj.imdbID.slice(7,9)*5/10;
       product.rating = obj.imdbRating != 'N/A' ? obj.imdbRating : 0;
-      product.runtime = obj.Runtime != 'N/A' ? obj.Runtime : '0';
+      product.runtime = obj.Runtime != 'N/A' ? obj.Runtime : '';
       product.language = obj.Language != 'N/A' ? obj.Language : '';
       product.country = obj.Country != 'N/A' ? obj.Country : '';
       product.genre = obj.Genre  != 'N/A' ? obj.Genre : '';
@@ -96,7 +96,7 @@ export class VideoApiService {
       product.actors = obj.Actors != 'N/A' ? obj.Actors : '';
       product.price = obj.imdbRating != 'N/A' ? Math.floor(obj.imdbRating*5) : obj.imdbID.slice(7,9)*5/10;
       product.rating = obj.imdbRating != 'N/A' ? obj.imdbRating : 0;
-      product.runtime = obj.Runtime != 'N/A' ? obj.Runtime : '0';
+      product.runtime = obj.Runtime != 'N/A' ? obj.Runtime : '';
       product.language = obj.Language != 'N/A' ? obj.Language : '';
       product.country = obj.Country != 'N/A' ? obj.Country : '';
       product.genre = obj.Genre != 'N/A' ? obj.Genre : '';

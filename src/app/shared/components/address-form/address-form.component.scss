@@ -5,41 +5,19 @@ $darklyRed: rgba(255,0,0, 0.5);
 $lightBlue: rgba(0, 0, 255, 0.5);
 
 .address{
-
-    &-cancel{
-        position: absolute;
-        top: 5px;
-        right: 3px;
-        display: block;
-        width: 32px;
-        height: 32px;
-        margin: 0;
-        padding: 0;
-        background: url('../../../../assets/img/icons.png') no-repeat -103px -1894px; //-140px -230px;
-        background-size: 488px 2111px;
-
-        &:hover{
-            cursor: pointer;
-        }
-    }
     
     &-add{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
         &-title{
             color: $lightBlue;
+            font-size: 32px;
         }
 
         &-items{
-            width: 600px;
-            height: 680px;
-            position: absolute;
-            top: -10px;
-            left: 454px;
-            background-color: azure;
-            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+           
 
             .button{
                 margin: 10px;
@@ -56,22 +34,6 @@ $lightBlue: rgba(0, 0, 255, 0.5);
                     padding: 10px 30px;
                     width: 100%;
                     font-size: 18px;
-                    //background-color: $darklyRed;
-                }
-
-                &-field{
-                    
-                    /*
-                    &-valid{
-                        border: 1px solid blue;
-                    }
-                    border-radius: 5px;
-                    border: 1px solid $red;
-
-                    &:focus {
-                        outline: none;
-        
-                    }*/
                 }
 
                 &-name{

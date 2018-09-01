@@ -1,11 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Address } from '../../models/address.model';
 import { AuthService } from '../../services/auth.service';
-
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -21,14 +20,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AddressFormComponent implements OnInit {
 
-  form: FormGroup;
+  public address: Address;
 
-  @Output() cancelAddress = new EventEmitter<any>();
-  @Output() addAddress = new EventEmitter<any>();
+  form: FormGroup;
 
   constructor(
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialogRef: MatDialogRef<AddressFormComponent>,
   ) { }
 
   private country: string = '';
@@ -53,11 +52,12 @@ export class AddressFormComponent implements OnInit {
     });
 
     this.matcher = new MyErrorStateMatcher();
+
   }
 
-  public add(form){
-    this.toastr.success('Address update to profile!', 'Success!');
-    this.addAddress.emit({
+  public add() {
+
+    this.dialogRef.close({
       id: this.authService.makeId(),
       country: this.country,
       streetAddress: this.streetAddress,
@@ -65,15 +65,6 @@ export class AddressFormComponent implements OnInit {
       zip: this.zip,
       state: this.state
     });
-    this.city = '';
-    this.country = '';
-    this.streetAddress = '';
-    this.zip = '';
-    this.state = '';
-  }
-
-  public cancel(){
-    this.cancelAddress.emit();
   }
 
 }

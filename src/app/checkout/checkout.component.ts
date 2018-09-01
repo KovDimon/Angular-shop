@@ -1,12 +1,15 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 
 import { CartService } from '../shared/services/cart.service';
 import { Product } from '../shared/models/product.model';
 import { AuthService } from '../shared/services/auth.service';
 import { Address } from '../shared/models/address.model';
 import { Profile } from '../shared/models/profile.model';
+import { AddressFormComponent } from '../shared/components/address-form/address-form.component';
+
 
 @Component({
   selector: 'app-checkout',
@@ -16,6 +19,10 @@ import { Profile } from '../shared/models/profile.model';
 export class CheckoutComponent implements OnInit {
 
   private numberPage: number = 1;
+
+  public windowWidth = '600px';
+
+  public windowHeight = '620px';
 
   private isShowed: boolean = false;
 
@@ -52,7 +59,8 @@ export class CheckoutComponent implements OnInit {
     private cartService:CartService,
     private authService: AuthService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -83,11 +91,6 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  public addAddress(event){
-    this.isShowed = false;
-    this.authService.addAddress(event);
-  }
-
   public removeAddress(event){
     this.authService.removeAddress(event);
   }
@@ -109,12 +112,23 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  public cancelAddress(){
-    this.isShowed = false;
+  public addAddress() {
+    
+    const dialogRef = this.dialog.open(AddressFormComponent, {
+      width: this.windowWidth,
+      height: this.windowHeight
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(!result){
+        return;
+      }else{
+        this.authService.addAddress(result);
+      }
+    });
   }
 
-  public add(){
-    this.isShowed = true;
+  public cancelAddress(){
+    this.isShowed = false;
   }
 
   public chooseAddress(address){

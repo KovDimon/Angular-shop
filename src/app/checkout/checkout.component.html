@@ -54,12 +54,11 @@
       </div>
       <div *ngIf="numberPage == 2" class="row checkout-address">
         <div class="col-md-3">
-          <button class="btn btn-primary address-button" (click)="add()">
+          <button class="btn btn-primary address-button" (click)="addAddress()">
             <h2 class="address-subtitle">
               Add Address
             </h2>
           </button>
-          <app-address-form *ngIf="isShowed" (cancelAddress)="cancelAddress()" (addAddress)="addAddress($event)"></app-address-form>
         </div>
         <div class="row align-items-center justify-content-start col-md-9 address-list">
           <app-address-display *ngFor="let address of addresses" class="address-item" [class.address-item-selected]="selectClass(address)"

@@ -32,7 +32,7 @@
         </div>
         <div class="row col-md-2 justify-content-center header-dropdown">
             <a href="#" *ngIf="!authService.isAuthenticated()" (click)="login($event)">Log In</a>
-            <a href="#" *ngIf="authService.isAuthenticated() && authService.isLoaded" class="header-dropdown-link" (click)="dropDown($event)">{{authService.getUserName()}}
+            <a href="#" *ngIf="isLoggedIn() && authService.isLoaded" class="header-dropdown-link" (click)="dropDown($event)">{{getUserName()}}
                 <i class="material-icons">arrow_drop_down</i>
             </a>
             <ul *ngIf="isShow" class="row justify-content-center align-items-center header-dropdown-menu">

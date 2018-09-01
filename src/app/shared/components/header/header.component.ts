@@ -64,5 +64,11 @@ export class HeaderComponent implements OnInit {
     this.isShow = !this.isShow;
   }
 
+  public isLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
+  }
 
+  public getUserName(): string {
+    return this.authService.getUserName();
+  }
 }

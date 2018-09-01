@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import {MatButtonModule, MatCheckboxModule, MatCardModule, MatFormFieldModule, MatInputModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatProgressSpinnerModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatCardModule, MatFormFieldModule, MatInputModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatProgressSpinnerModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -19,13 +19,14 @@ import { CategoryPageComponent } from './category-page/category-page.component';
 import { FilterComponent } from './shared/components/filter/filter.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AddressComponent } from './address/address.component';
+import { AddressComponent} from './address/address.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AddressFormComponent } from './shared/components/address-form/address-form.component';
 import { AddressDisplayComponent } from './shared/components/address-display/address-display.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ConverterPipe } from './shared/pipes/converter.pipe';
 import { CallbackComponent } from './callback/callback.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 @NgModule({
@@ -67,11 +68,16 @@ import { CallbackComponent } from './callback/callback.component';
     MatCheckboxModule,
     MatCardModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
+  ],
+  entryComponents: [AddressFormComponent
   ],
   providers: [
     VideoApiService, 
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
+    AuthGuard
+    //{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]
 })
